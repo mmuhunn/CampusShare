@@ -1,7 +1,7 @@
 # CampusShare
 ![image](https://github.com/user-attachments/assets/69040374-efe7-438d-9137-2b2ef9d4705e)
 
-### **Fostering a community of shared knowledge and academic excellence.**
+> ### **Fostering a community of shared knowledge and academic excellence.**
 
 A platform to share and discover academic resources, such as lecture notes and exam papers.  Built with Spring Boot and React.js for seamless user experience and scalability.
 
