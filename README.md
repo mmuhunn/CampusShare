@@ -1,7 +1,9 @@
 # CampusShare
 ![image](https://github.com/user-attachments/assets/69040374-efe7-438d-9137-2b2ef9d4705e)
 
+
 > ### **Fostering a community of shared knowledge and academic excellence.**.
+
 
 ## Purpose and Goals
 
@@ -19,11 +21,11 @@ CampusShare aims to create a community where academic resources and assignment a
 ## Key Features
 
 1. **Login System**
-   - University authentication for login (e.g., TongJeongSi verification).
+   - University authentication for login.
    - Enable data collection and personalized experiences.
 
 2. **Resource Sharing and Downloading**
-   - Upload/download lecture materials (pending copyright approval), assignment approaches, and summarized notes.
+   - Upload/download lecture materials, assignment approaches, and summarized notes.
 
 3. **Communication Space**
    - Comment sections and feedback functionalities for user interaction.
