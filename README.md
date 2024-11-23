@@ -1,9 +1,7 @@
 # CampusShare
 ![image](https://github.com/user-attachments/assets/69040374-efe7-438d-9137-2b2ef9d4705e)
 
-> ### **Fostering a community of shared knowledge and academic excellence.**
-
-CampusShare is a collaborative academic platform for university students, enabling them to share lecture materials, assignment approaches, and professor evalutions to foster cooperation among peers.
+> ### **Fostering a community of shared knowledge and academic excellence.**.
 
 ## Purpose and Goals
 
