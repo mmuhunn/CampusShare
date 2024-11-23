@@ -3,12 +3,39 @@
 
 > ### **Fostering a community of shared knowledge and academic excellence.**
 
-A platform to share and discover academic resources, such as lecture notes and exam papers.  Built with Spring Boot and React.js for seamless user experience and scalability.
+CampusShare is a collaborative academic platform for university students, enabling them to share lecture materials, assignment approaches, and professor evalutions to foster cooperation among peers.
 
-## Features
-- Upload and share lecture notes.
-- Search and filter by course, professor, and semester.
-- Visualize trending resources.
+## Purpose and Goals
+
+CampusShare aims to create a community where academic resources and assignment approaches are shared, leaving valuable records for future students to build upon.
+
+### Core Values
+- Enhance academic performance through collaboration and resource sharing.
+- Establish a sustainalbe platform for recording and referencing academic experiences.
+- Provide ITM sutdents with a foundation for teamwork and potential contributions to open-source projects.
+
+### Future Scalability
+- Expand the platform for use by students from other schools.
+- Evlove from a department-level community to an inter-university collaboration platform.
+
+## Key Features
+
+1. **Login System**
+   - University authentication for login (e.g., TongJeongSi verification).
+   - Enable data collection and personalized experiences.
+
+2. **Resource Sharing and Downloading**
+   - Upload/download lecture materials (pending copyright approval), assignment approaches, and summarized notes.
+
+3. **Communication Space**
+   - Comment sections and feedback functionalities for user interaction.
+
+4. **Lecture and Professor Evaluations**
+   - Provide insights on teaching styles and preferences based on student feedback.
+
+5. **Participation Ranking System**
+   - Measure contributions to the platform and implement a ranking system.
+   - Encourage active participation with potential rewards..
 
 ## How to Contribue
 1. Fork this repository.
