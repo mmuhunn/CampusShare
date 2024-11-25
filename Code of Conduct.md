@@ -1,31 +1,42 @@
 # CampusShare Code of Conduct
 
 ## Our Pledge
-We, as members of the CampusShare community, pledge to make participation in our project a harassment-free experience for everyone, regardless of age, body size, disability, ethnicity, gender identity and expression, level of experience, nationality, personal appearance, race, religion, or sexual identity and orientation.
+We, as members of the CampusShare community, pledge to make participation in our project a safe, inclusive, and respectful experience for everyone. This includes fostering an environment where students can freely share, discuss, and build upon study resources while respecting intellectual property and ethical collaboration.
 
+We are committed to building a platform that encourages open communication, constructive feedback, and meaningful contributions to support academic success and community growth.
 ## Our Standards
-Examples of behavior that contributes to a positive environment for our community include:
-- Using welcoming and inclusive language
-- Being respectful of differing viewpoints and experiences
-- Gracefully accepting constructive criticism
-- Focusing on what is best for the community
+Examples of behaviors that contribute to a positive environment for our community include:
+
+- Using welcoming and inclusive language, especially in public feedback spaces such as comments or discussions.
+- Respecting diverse perspectives and experiences, including varying study methods or academic approaches.
+- Sharing resources ethically, ensuring respect for copyright and intellectual property laws.
+- Providing constructive, non-disparaging feedback to improve shared materials or community content.
+- Encouraging participation through kindness and acknowledgment of others' contributions.
 
 ## Unacceptable Behavior
 Examples of unacceptable behavior by participants include:
-- The use of sexualized language or imagery, and unwelcome sexual attention or advances
-- Trolling, insulting/derogatory comments, and personal or political attacks
-- Public or private harassment
-- Publishing others' private information, such as a physical or electronic address, without explicit permission
-- Other conduct which could reasonably be considered inappropriate in a professional setting
+
+- Using offensive language, trolling, or making derogatory comments in comments, feedback, or other community interactions.
+- Sharing unauthorized copyrighted materials or claiming credit for others' work.
+- Engaging in harassment, intimidation, or exclusionary practices within discussions or rankings.
+- Exploiting participation ranking systems unfairly to gain undue recognition.
+- Publishing personal information of others without explicit permission.
+- Any behavior that undermines the community's goal of collaboration and ethical resource sharing.
 
 ## Enforcement Responsibilities
-Community leaders are responsible for clarifying the standards of acceptable behavior and are expected to take appropriate and fair corrective action in response to any instances of unacceptable behavior.
+Community leaders and moderators are responsible for clarifying and enforcing the standards of acceptable behavior. They are expected to act fairly and impartially to resolve issues and ensure that the community remains a supportive and productive space.
 
 ## Enforcement
-Instances of abusive, harassing, or otherwise unacceptable behavior may be reported to the project team at [Insert contact here]. All complaints will be reviewed and investigated promptly and fairly.
+Instances of unacceptable behavior may be reported to the project team at [Insert contact here]. Reports will be handled confidentially and reviewed promptly.
+
+Consequences for violations may include warnings, temporary suspension, or permanent exclusion from the platform, depending on the severity of the behavior.
 
 ## Scope
-This Code of Conduct applies within all project spaces, and when an individual is representing the project or community in public spaces. Examples of representing the project or community include using an official project email address, posting via an official social media account, or acting as an appointed representative at an online or offline event.
+This Code of Conduct applies to all interactions within CampusShare spaces, including public posts, comments, feedback areas, and direct messages. It also applies when representing CampusShare at events or using official project channels.
 
 ## Attribution
-This Code of Conduct is adapted from the [Contributor Covenant](https://www.contributor-covenant.org/), version 2.0, available at https://www.contributor-covenant.org/version/2/0/code_of_conduct.html
+This Code of Conduct is adapted from the Contributor Covenant, version 2.0, and customized to reflect the mission and values of CampusShare.
+
+
+
+
