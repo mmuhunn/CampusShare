@@ -12,7 +12,6 @@
           <br/><img src="https://img.shields.io/badge/Spring-6DB33F?style=for-the-badge&logo=Spring&logoColor=white">
           </div>
     </div>
-    <div style="text-align: left;"> 
        
 > ### **Fostering a community of shared knowledge and academic excellence.**.
 
@@ -58,7 +57,8 @@ CampusShare aims to create a community where academic resources and assignment a
 [Contributing Guidelines](#Contributing Guidelines)
 
 ![Top Language](https://img.shields.io/github/languages/top/mmuhunn/CampusShare)
-
+ 
+ <div style="text-align: left;"> 
     <h2 style="border-bottom: 1px solid #d8dee4; color: #282d33;"> 🏅 Stats </h2> <div style="text-align: left;"> <img src="https://github-readme-stats.vercel.app/api?username=mmuhunn&bg_color=180,000000,&title_color=000000&text_color=000000"
          /> <img src="https://github-readme-stats.vercel.app/api/top-langs/?username=mmuhunn&layout=compact&bg_color=180,000000,&title_color=000000&text_color=000000"
           /> </div> 
