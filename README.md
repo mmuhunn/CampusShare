@@ -54,7 +54,7 @@ CampusShare aims to create a community where academic resources and assignment a
 3. Commit your changes: `git commit -m 'Add some feature'`.
 4. Push to the branch: `git push origin feature-name`.
 5. Open a pull request.
-[Contributing Guidelines](#https://github.com/mmuhunn/CampusShare/blob/docs/update-project-docs/Contributing%20Guidelines.md)
+[Contributing Guidelines](#contributing-guidelines)
 
 ![Top Language](https://img.shields.io/github/languages/top/mmuhunn/CampusShare)
  
