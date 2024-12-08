@@ -1,8 +1,14 @@
 import React from "react";
-import { Link } from "react-router-dom";
+import { Link, useNavigate } from "react-router-dom"; // useNavigate 추가
 import logo from "../CapusShare_logo.png"; // 로고 경로 수정
 
 function Header() {
+  const navigate = useNavigate(); // useNavigate 훅 사용
+
+  const handleLoginClick = () => {
+    navigate("/login"); // 로그인 페이지로 이동
+  };
+
   return (
     <header style={styles.header}>
       <div style={styles.logoContainer}>
@@ -11,7 +17,7 @@ function Header() {
       <nav style={styles.nav}>
         <Link to="/" style={styles.link}>Home</Link>
         <Link to="/board" style={styles.link}>Board</Link>
-        <button style={styles.loginButton} onClick={() => alert("Login clicked!")}>
+        <button style={styles.loginButton} onClick={handleLoginClick}>
           Login
         </button>
       </nav>
@@ -22,7 +28,7 @@ function Header() {
 const styles = {
   header: {
     display: "flex",
-    flexDirection: "column", // 로고와 네비게이션을 수직으로 배치
+    flexDirection: "column",
     alignItems: "center",
     padding: "10px 20px",
     backgroundColor: "#fff",
@@ -30,16 +36,16 @@ const styles = {
     boxShadow: "0 2px 5px rgba(0, 0, 0, 0.1)",
   },
   logoContainer: {
-    width: "100%", // 전체 박스 너비
-    maxWidth: "800px", // 최대 너비 제한
+    width: "100%",
+    maxWidth: "800px",
     textAlign: "center",
     margin: "0 auto",
   },
   logo: {
     width: "100%",
     height: "auto",
-    borderRadius: "8px", // 둥근 모서리
-    boxShadow: "0 2px 5px rgba(0, 0, 0, 0.1)", // 그림자 추가
+    borderRadius: "8px",
+    boxShadow: "0 2px 5px rgba(0, 0, 0, 0.1)",
   },
   nav: {
     display: "flex",
@@ -56,7 +62,7 @@ const styles = {
   },
   loginButton: {
     padding: "8px 12px",
-    backgroundColor: "#6b4f4f", // 따뜻한 갈색 버튼
+    backgroundColor: "#6b4f4f",
     color: "#fff",
     border: "none",
     borderRadius: "5px",

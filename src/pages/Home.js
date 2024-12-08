@@ -26,7 +26,8 @@ const styles = {
 
 function Home() {
   return (
-    <div>
+
+    <div className="page-container">
       <h1 style={styles.heading}>Welcome to CampusShare!</h1>
       <div style={styles.about}>
         <h2>About CampusShare</h2>
