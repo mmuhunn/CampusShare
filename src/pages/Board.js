@@ -44,7 +44,7 @@ function Board() {
 
   return (
     <div className="page-container">
-    <div style={styles.container}>
+      <div style={{ maxWidth: "800px", margin: "0 auto" }}>
       <h1 style={styles.heading}> ITM Board</h1>
 
       {/* 업로드 폼 */}
