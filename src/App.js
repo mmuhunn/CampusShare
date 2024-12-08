@@ -1,19 +1,20 @@
 import React from "react";
-import { BrowserRouter as Router, Routes, Route } from "react-router-dom"; // Router 관련 import 추가
-import Header from "./components/Header"; // Header 컴포넌트 import
-import Home from "./pages/Home"; // Home 컴포넌트 import
-import Board from "./pages/Board.js";
-import './App.css'; // 스타일 파일 import
-
+import { BrowserRouter as Router, Routes, Route } from "react-router-dom";
+import Header from "./components/Header";
+import Home from "./pages/Home";
+import Board from "./pages/Board";
+import Login from "./pages/Login"; // Login 페이지 추가
+import CreateAccount from "./pages/CreateAccount"; // CreateAccount 페이지 추가
 
 function App() {
   return (
     <Router>
-      {/* Header는 모든 페이지에서 공통적으로 보여야 하므로 Router 안에서 Routes 위에 배치 */}
       <Header />
       <Routes>
-      <Route path="/" element={<Home />} /> {/* Home 페이지 */}
-      <Route path="/board" element={<Board />} /> {/*Board 페이지*/}
+        <Route path="/" element={<Home />} />
+        <Route path="/board" element={<Board />} />
+        <Route path="/login" element={<Login />} /> {/* Login 라우트 추가 */}
+        <Route path="/create-account" element={<CreateAccount />} /> {/* CreateAccount 라우트 */}
       </Routes>
     </Router>
   );

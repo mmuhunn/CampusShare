@@ -43,6 +43,7 @@ function Board() {
   };
 
   return (
+    <div className="page-container">
     <div style={styles.container}>
       <h1 style={styles.heading}> ITM Board</h1>
 
@@ -108,6 +109,7 @@ function Board() {
         ))}
       </ul>
     </div>
+  </div>
   );
 }
 
