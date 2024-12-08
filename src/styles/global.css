@@ -55,14 +55,3 @@ header img {
   display: inline-block;
   vertical-align: middle;
 }
-
-.page-container {
-  height: calc(100vh - 80px); /* 헤더를 제외한 전체 화면 높이 */
-  display: flex;
-  flex-direction: column;
-  justify-content: space-between; /* 내용이 적어도 하단 여백 확보 */
-  padding: 20px;
-  box-sizing: border-box;
-  background-color: #f9f9f9;
-}
-
