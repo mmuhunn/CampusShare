@@ -5,6 +5,7 @@ import Home from "./pages/Home"; // Home 컴포넌트 import
 import Board from "./pages/Board.js";
 import './App.css'; // 스타일 파일 import
 
+
 function App() {
   return (
     <Router>
