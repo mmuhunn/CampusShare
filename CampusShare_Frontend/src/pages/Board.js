@@ -1,22 +1,21 @@
 import React, { useState, useEffect } from "react";
-import { CKEditor } from "@ckeditor/ckeditor5-react";
-import ClassicEditor from "@ckeditor/ckeditor5-build-classic";
+import { useParams } from "react-router-dom";
 import axios from "axios";
 
 function Board() {
-  const [posts, setPosts] = useState([]); // 게시글 목록 상태
-  const [title, setTitle] = useState(""); // 제목 상태
-  const [content, setContent] = useState(""); // CKEditor 내용 상태
-  const [file, setFile] = useState(null); // 업로드할 파일
+  const { subject } = useParams(); // Getting subject name parameter from URL
+  const [posts, setPosts] = useState([]);
+  const [title, setTitle] = useState("");
+  const [content, setContent] = useState("");
+  const [file, setFile] = useState(null);
 
-  // 게시글 목록 불러오기
   useEffect(() => {
     fetchPosts();
-  }, []);
+  }, [subject]);
 
   const fetchPosts = async () => {
     try {
-      const response = await axios.get("http://localhost:8080/posts");
+      const response = await axios.get(`http://localhost:8080/posts/${subject}`);
       setPosts(response.data);
     } catch (error) {
       console.error("Error fetching posts:", error);
@@ -31,156 +30,137 @@ function Board() {
     formData.append("file", file);
 
     try {
-      await axios.post("http://localhost:8080/posts", formData);
-      alert("File uploaded successfully");
+      await axios.post(`http://localhost:8080/posts/${subject}`, formData);
+      alert("Upload Success");
       setTitle("");
       setContent("");
       setFile(null);
-      fetchPosts(); // 업로드 후 게시글 목록 갱신
+      fetchPosts(); // Update board list after upload
     } catch (error) {
-      console.error("Error uploading file:", error);
+      console.error("Error uploading post:", error);
     }
   };
 
+  const styles = {
+    container: {
+      maxWidth: "800px",
+      margin: "20px auto",
+      padding: "20px",
+      backgroundColor: "#f9f9f9",
+      borderRadius: "10px",
+      boxShadow: "0 2px 5px rgba(0, 0, 0, 0.1)",
+    },
+    heading: {
+      fontFamily: "'Poppins', sans-serif",
+      fontSize: "2rem",
+      fontWeight: "600",
+      color: "#6b4f4f",
+      textAlign: "center",
+      marginBottom: "20px",
+    },
+    form: {
+      backgroundColor: "#fff",
+      padding: "20px",
+      borderRadius: "10px",
+      boxShadow: "0 1px 3px rgba(0, 0, 0, 0.1)",
+      marginBottom: "30px",
+    },
+    input: {
+      width: "100%",
+      padding: "10px",
+      margin: "10px 0",
+      borderRadius: "5px",
+      border: "1px solid #ddd",
+      fontSize: "1rem",
+    },
+    button: {
+      padding: "10px 20px",
+      backgroundColor: "#6b4f4f",
+      color: "#fff",
+      border: "none",
+      borderRadius: "5px",
+      cursor: "pointer",
+      fontSize: "1rem",
+      marginTop: "10px",
+    },
+    postList: {
+      listStyleType: "none",
+      padding: 0,
+    },
+    postCard: {
+      backgroundColor: "#fff",
+      padding: "15px",
+      margin: "10px 0",
+      borderRadius: "10px",
+      boxShadow: "0 1px 3px rgba(0, 0, 0, 0.1)",
+    },
+    postTitle: {
+      fontSize: "1.2rem",
+      fontWeight: "600",
+      color: "#6b4f4f",
+      marginBottom: "10px",
+    },
+    postContent: {
+      fontSize: "1rem",
+      color: "#555",
+    },
+    downloadLink: {
+      marginTop: "10px",
+      display: "inline-block",
+      color: "#6b4f4f",
+      textDecoration: "none",
+      fontWeight: "600",
+    },
+  };
+
   return (
-    <div className="page-container">
     <div style={styles.container}>
-      <h1 style={styles.heading}> ITM Board</h1>
-
-      {/* 업로드 폼 */}
-      <form onSubmit={handleUpload} style={styles.form}>
-        {/* 제목 입력 */}
-        <div style={styles.inputGroup}>
-          <label style={styles.label}>제목</label>
-          <input
-            type="text"
-            value={title}
-            onChange={(e) => setTitle(e.target.value)}
-            style={styles.input}
-            placeholder="제목을 입력하세요"
-            required
-          />
-        </div>
-
-        {/* CKEditor */}
-        <div style={styles.editorGroup}>
-          <label style={styles.label}>내용</label>
-          <CKEditor
-            editor={ClassicEditor}
-            data={content}
-            onChange={(event, editor) => {
-              const data = editor.getData();
-              setContent(data);
-            }}
-          />
-        </div>
-
-        {/* 파일 업로드 */}
-        <div style={styles.inputGroup}>
-          <label style={styles.label}>파일</label>
-          <input
-            type="file"
-            onChange={(e) => setFile(e.target.files[0])}
-            style={styles.fileInput}
-            required
-          />
-        </div>
-
-        {/* 제출 버튼 */}
+      <h1 style={styles.heading}>{subject.replace(/-/g, " ")} Board</h1>
+      <form style={styles.form} onSubmit={handleUpload}>
+        <h2>Write New</h2>
+        <input
+          type="text"
+          value={title}
+          onChange={(e) => setTitle(e.target.value)}
+          placeholder="Title"
+          style={styles.input}
+          required
+        />
+        <textarea
+          value={content}
+          onChange={(e) => setContent(e.target.value)}
+          placeholder="Contents"
+          style={styles.input}
+          rows="5"
+          required
+        />
+        <input
+          type="file"
+          onChange={(e) => setFile(e.target.files[0])}
+          style={styles.input}
+          required
+        />
         <button type="submit" style={styles.button}>
-          업로드
+          Upload
         </button>
       </form>
-
-      {/* 게시판 목록 */}
       <ul style={styles.postList}>
         {posts.map((post) => (
-          <li key={post.id} style={styles.postItem}>
-            <h2 style={styles.postTitle}>{post.title}</h2>
-            <div dangerouslySetInnerHTML={{ __html: post.content }}></div>
+          <li key={post.id} style={styles.postCard}>
+            <h3 style={styles.postTitle}>{post.title}</h3>
+            <p style={styles.postContent}>{post.content}</p>
             <a
               href={`http://localhost:8080/files/${post.filePath}`}
-              download
               style={styles.downloadLink}
+              download
             >
-              파일 다운로드
+              file download
             </a>
           </li>
         ))}
       </ul>
     </div>
-  </div>
   );
 }
-
-// 스타일링
-const styles = {
-  container: {
-    maxWidth: "800px",
-    margin: "0 auto",
-    padding: "20px",
-    border: "1px solid #ccc",
-    borderRadius: "8px",
-    boxShadow: "0 2px 5px rgba(0, 0, 0, 0.1)",
-    backgroundColor: "#fff",
-  },
-  heading: {
-    textAlign: "center",
-    marginBottom: "20px",
-  },
-  form: {
-    display: "flex",
-    flexDirection: "column",
-    marginBottom: "30px",
-  },
-  inputGroup: {
-    marginBottom: "15px",
-  },
-  editorGroup: {
-    marginBottom: "20px",
-  },
-  label: {
-    marginBottom: "5px",
-    fontWeight: "bold",
-  },
-  input: {
-    width: "100%",
-    padding: "10px",
-    fontSize: "16px",
-    borderRadius: "4px",
-    border: "1px solid #ccc",
-  },
-  fileInput: {
-    fontSize: "16px",
-  },
-  button: {
-    padding: "10px 20px",
-    backgroundColor: "#007bff",
-    color: "#fff",
-    border: "none",
-    borderRadius: "4px",
-    cursor: "pointer",
-    fontSize: "16px",
-    alignSelf: "center",
-  },
-  postList: {
-    listStyleType: "none",
-    padding: 0,
-  },
-  postItem: {
-    marginBottom: "20px",
-    padding: "15px",
-    border: "1px solid #ddd",
-    borderRadius: "5px",
-  },
-  postTitle: {
-    marginBottom: "10px",
-    fontWeight: "bold",
-  },
-  downloadLink: {
-    color: "#007bff",
-    textDecoration: "none",
-  },
-};
 
 export default Board;

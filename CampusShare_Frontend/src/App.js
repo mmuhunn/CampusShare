@@ -3,8 +3,9 @@ import { BrowserRouter as Router, Routes, Route } from "react-router-dom";
 import Header from "./components/Header";
 import Home from "./pages/Home";
 import Board from "./pages/Board";
-import Login from "./pages/Login"; // Login 페이지 추가
-import CreateAccount from "./pages/CreateAccount"; // CreateAccount 페이지 추가
+import Login from "./pages/Login";
+import CreateAccount from "./pages/CreateAccount";
+import SubjectList from "./pages/SubjectList";
 
 function App() {
   return (
@@ -12,12 +13,14 @@ function App() {
       <Header />
       <Routes>
         <Route path="/" element={<Home />} />
-        <Route path="/board" element={<Board />} />
-        <Route path="/login" element={<Login />} /> {/* Login 라우트 추가 */}
-        <Route path="/create-account" element={<CreateAccount />} /> {/* CreateAccount 라우트 */}
+        <Route path="/subjectlist" element={<SubjectList />} />
+        <Route path="/board/:subject" element={<Board />} /> {/* 동적 경로 */}
+        <Route path="/login" element={<Login />} />
+        <Route path="/create-account" element={<CreateAccount />} />
       </Routes>
     </Router>
   );
 }
 
 export default App;
+

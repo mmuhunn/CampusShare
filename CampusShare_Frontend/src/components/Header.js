@@ -16,7 +16,7 @@ function Header() {
       </div>
       <nav style={styles.nav}>
         <Link to="/" style={styles.link}>Home</Link>
-        <Link to="/board" style={styles.link}>Board</Link>
+        <Link to="/subjectlist" style={styles.link}>Subject List</Link>
         <button style={styles.loginButton} onClick={handleLoginClick}>
           Login
         </button>
