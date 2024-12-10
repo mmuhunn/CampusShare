@@ -1,4 +1,5 @@
 import React, { useState } from "react";
+import { useNavigate } from "react-router-dom";
 
 const styles = {
   container: {
@@ -48,19 +49,28 @@ const styles = {
 function Login() {
   const [email, setEmail] = useState("");
   const [password, setPassword] = useState("");
+  const navigate = useNavigate();
 
   const handleLogin = () => {
-    alert(`Email: ${email}, Password: ${password}`);
-    // 여기에 로그인 로직 추가
+    const emailRegex = /^[^\s@]+@[^\s@]+\.[^\s@]+$/;
+    if (!emailRegex.test(email)) {
+      alert("Please enter a valid email address.");
+      return;
+    }
+
+    if (!password) {
+      alert("Please enter your password.");
+      return;
+    }
+
+    alert(`Logged in with Email: ${email}`);
   };
 
   const handleCreateAccount = () => {
-    alert("Redirecting to Create Account page...");
-    // 여기에 계정 생성 페이지로 이동 로직 추가
+    navigate("/create-account");
   };
 
   return (
-    <div className="page-container">
     <div style={styles.container}>
       <h2 style={styles.heading}>Login</h2>
       <input
@@ -69,6 +79,7 @@ function Login() {
         style={styles.input}
         value={email}
         onChange={(e) => setEmail(e.target.value)}
+        required
       />
       <input
         type="password"
@@ -76,15 +87,15 @@ function Login() {
         style={styles.input}
         value={password}
         onChange={(e) => setPassword(e.target.value)}
-        />
-      <button style={styles.button} onClick={handleLogin} style2 ={{padding: "10px 20px"}}>
+        required
+      />
+      <button style={styles.button} onClick={handleLogin}>
         Login
       </button>
       <div style={styles.createAccount} onClick={handleCreateAccount}>
         Create Account
       </div>
     </div>
-</div>
   );
 }
 
