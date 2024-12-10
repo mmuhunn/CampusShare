@@ -20,10 +20,9 @@ public class QuestionController {
 
   // Endpoint to create a new question
   @PostMapping("/create")
-  public ResponseEntity<Question> createQuestion(@RequestParam String authorName,
-                                                 @RequestParam String authorId,
+  public ResponseEntity<Question> createQuestion(@RequestParam String studentID,
                                                  @RequestParam String content) {
-    Question question = questionService.createQuestion(authorName, authorId, content);
+    Question question = questionService.createQuestion(studentID, content);
     return ResponseEntity.ok(question);
   }
 

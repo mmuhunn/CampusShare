@@ -18,8 +18,8 @@ public class QuestionService {
   }
 
   // Method to create a new question
-  public Question createQuestion(String authorName, String authorId, String content) {
-    Question question = new Question(authorName, authorId, content);
+  public Question createQuestion(String studentID, String content) {
+    Question question = new Question(studentID, content);
     return questionRepository.save(question);
   }
 

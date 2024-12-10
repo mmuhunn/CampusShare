@@ -16,15 +16,13 @@ public class Question {
   @GeneratedValue(strategy = GenerationType.IDENTITY)
   private Long questionId; // Unique ID for the question
 
-  private String authorName; // Name of the author
-  private String authorId;   // ID of the author (e.g., student number)
+  private String studentID;
   private String content;    // Content of the question
 
   private LocalDateTime createdAt; // Timestamp when the question was created
 
-  public Question(String authorName, String authorId, String content) {
-    this.authorName = authorName;
-    this.authorId = authorId;
+  public Question(String studentID, String content) {
+    this.studentID = studentID;
     this.content = content;
     this.createdAt = LocalDateTime.now();
   }
