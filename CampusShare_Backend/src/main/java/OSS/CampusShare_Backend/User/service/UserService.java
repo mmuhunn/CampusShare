@@ -31,4 +31,9 @@ public class UserService {
         }
         return user.get();
     }
+
+    public User findByStudentNumber(String studentNumber) {
+        Optional<User> user = userRepository.findByStudentNumber(studentNumber);
+        return user.orElseThrow(() -> new IllegalArgumentException("User not found"));
+    }
 }
