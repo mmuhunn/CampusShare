@@ -1,8 +1,6 @@
-
 # See https://help.github.com/articles/ignoring-files/ for more about ignoring files.
 
 # dependencies
-/node_modules
 /.pnp
 .pnp.js
 
@@ -11,6 +9,8 @@
 
 # production
 /build
+CampusShare_Backend/node_modules/
+CampusShare_Frontend/node_modules/
 
 # misc
 .DS_Store
@@ -18,8 +18,10 @@
 .env.development.local
 .env.test.local
 .env.production.local
+.idea
+*.iml
 
+# logs
 npm-debug.log*
 yarn-debug.log*
 yarn-error.log*
->>>>>>> ec73e04 (Initialize project using Create React App)
