@@ -2,6 +2,8 @@ package OSS.CampusShare_Backend.question.controller;
 
 import OSS.CampusShare_Backend.question.domain.Question;
 import OSS.CampusShare_Backend.question.service.QuestionService;
+import lombok.AccessLevel;
+import lombok.RequiredArgsConstructor;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.http.ResponseEntity;
 import org.springframework.web.bind.annotation.*;
@@ -10,13 +12,14 @@ import java.util.List;
 
 @RestController
 @RequestMapping("/api/question")
+@RequiredArgsConstructor(access = AccessLevel.PROTECTED)
 public class QuestionController {
   private final QuestionService questionService;
 
-  @Autowired
-  public QuestionController(QuestionService questionService) {
-    this.questionService = questionService;
-  }
+//  @Autowired
+//  public QuestionController(QuestionService questionService) {
+//    this.questionService = questionService;
+//  }
 
   // Endpoint to create a new question
   @PostMapping("/create")

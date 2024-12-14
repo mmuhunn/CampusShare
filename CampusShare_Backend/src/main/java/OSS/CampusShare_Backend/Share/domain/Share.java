@@ -12,17 +12,24 @@ import java.time.LocalDateTime;
 @Getter
 @Setter
 @NoArgsConstructor
+@Table(name = "shares")
 public class Share {
 
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
     private Long id;
 
+    @Column
     private String uploadId;
+    @Column
     private String title;
+    @Column
     private String content;
+    @Column
     private String file;
+    @Column
     private int numberOfDownloads;
+    @Column
     private LocalDateTime uploadTime;
 
     @ManyToOne(fetch = FetchType.LAZY)

@@ -1,0 +1,16 @@
+{
+  "files": {
+    "main.css": "/static/css/main.c0e34400.css",
+    "main.js": "/static/js/main.601bec81.js",
+    "static/js/453.2e2c37bd.chunk.js": "/static/js/453.2e2c37bd.chunk.js",
+    "static/media/CapusShare_logo.png": "/static/media/CapusShare_logo.907352e9a2545037894d.png",
+    "index.html": "/index.html",
+    "main.c0e34400.css.map": "/static/css/main.c0e34400.css.map",
+    "main.601bec81.js.map": "/static/js/main.601bec81.js.map",
+    "453.2e2c37bd.chunk.js.map": "/static/js/453.2e2c37bd.chunk.js.map"
+  },
+  "entrypoints": [
+    "static/css/main.c0e34400.css",
+    "static/js/main.601bec81.js"
+  ]
+}
