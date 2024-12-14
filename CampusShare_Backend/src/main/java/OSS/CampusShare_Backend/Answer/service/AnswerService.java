@@ -2,6 +2,8 @@ package OSS.CampusShare_Backend.Answer.service;
 
 import OSS.CampusShare_Backend.Answer.domain.Answer;
 import OSS.CampusShare_Backend.Answer.repository.AnswerRepository;
+import jakarta.transaction.Transactional;
+import lombok.AllArgsConstructor;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
@@ -9,13 +11,10 @@ import java.util.List;
 import java.util.Optional;
 
 @Service
+@AllArgsConstructor
+@Transactional
 public class AnswerService {
   private final AnswerRepository answerRepository;
-
-  @Autowired
-  public AnswerService(AnswerRepository answerRepository) {
-    this.answerRepository = answerRepository;
-  }
 
   // Method to create a new answer
   public Answer createAnswer(Long questionId, String studentID, String content) {

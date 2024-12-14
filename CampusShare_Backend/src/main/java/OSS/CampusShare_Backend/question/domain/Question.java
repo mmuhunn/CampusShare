@@ -11,14 +11,18 @@ import java.time.LocalDateTime;
 @Getter
 @Setter
 @NoArgsConstructor
+@Table(name = "questions")
 public class Question {
   @Id
   @GeneratedValue(strategy = GenerationType.IDENTITY)
   private Long questionId; // Unique ID for the question
 
+  @Column
   private String studentID;
+  @Column
   private String content;    // Content of the question
 
+  @Column
   private LocalDateTime createdAt; // Timestamp when the question was created
 
   public Question(String studentID, String content) {
