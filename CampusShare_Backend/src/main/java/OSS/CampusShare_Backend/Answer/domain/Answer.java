@@ -9,13 +9,16 @@ import lombok.Setter;
 @Getter
 @Setter
 @NoArgsConstructor
+@Table(name = "answers")
 public class Answer {
   @Id
   @GeneratedValue(strategy = GenerationType.IDENTITY)
   private Long answerId; // Unique ID for the answer
-
+  @Column
   private String studentID;
+  @Column
   private String authorId;   // ID of the author (e.g., student number)
+  @Column
   private String content;    // Content of the answer
 
   public Answer(String studentID, String authorId, String content) {
