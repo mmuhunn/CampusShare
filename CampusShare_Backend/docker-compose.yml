@@ -3,7 +3,7 @@ version: '3'
 services:
   mysql:
     image: mysql:8.0
-    container_name: test-ontime-mysql
+    container_name: campus-share-mysql
     ports:
       - "3306:3306"
     environment:
