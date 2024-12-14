@@ -88,6 +88,12 @@ function Home() {
           View All Popular Posts
         </Link>
       </div>
+
+      <div style={{ textAlign: "center", marginTop: "30px" }}>
+        <Link to="/ranking" style={styles.viewAllLink}>
+          View Rankings
+        </Link>
+      </div>
     </div>
   );
 }
