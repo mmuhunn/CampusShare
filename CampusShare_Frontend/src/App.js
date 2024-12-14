@@ -1,26 +1,32 @@
-import React from "react";
+import React, { useState } from "react";
 import { BrowserRouter as Router, Routes, Route } from "react-router-dom";
 import Header from "./components/Header";
 import Home from "./pages/Home";
-import Board from "./pages/Board";
 import Login from "./pages/Login";
-import CreateAccount from "./pages/CreateAccount";
 import SubjectList from "./pages/SubjectList";
+import CreateAccount from "./pages/CreateAccount";
+import Board from "./pages/Board";
+import NewPost from "./pages/NewPost";
 
-function App() {
+const App = () => {
+  // coursesData 상태를 관리하기 위한 useState 추가
+  const [coursesData, setCoursesData] = useState([]);
+
   return (
     <Router>
-      <Header />
+      {/* Header에 setCoursesData 전달 */}
+      <Header setCoursesData={setCoursesData} />
       <Routes>
         <Route path="/" element={<Home />} />
-        <Route path="/subjectlist" element={<SubjectList />} />
-        <Route path="/board/:subject" element={<Board />} /> {/* 동적 경로 */}
         <Route path="/login" element={<Login />} />
-        <Route path="/create-account" element={<CreateAccount />} />
+        <Route path="/subjectlist" element={<SubjectList />} />
+        <Route path="/createaccount" element={<CreateAccount />} />
+        {/* Board와 NewPost에 coursesData 전달 */}
+        <Route path="/board" element={<Board coursesData={coursesData} />} />
+        <Route path="/newpost" element={<NewPost coursesData={coursesData} />} />
       </Routes>
     </Router>
   );
-}
+};
 
 export default App;
-

@@ -1,5 +1,5 @@
 import React, { useState } from "react";
-import { useNavigate } from "react-router-dom";
+import { Link, useNavigate } from "react-router-dom";
 
 const styles = {
   container: {
@@ -41,7 +41,6 @@ const styles = {
     marginTop: "20px",
     fontSize: "0.9rem",
     color: "#6b4f4f",
-    cursor: "pointer",
     textDecoration: "underline",
   },
 };
@@ -66,10 +65,6 @@ function Login() {
     alert(`Logged in with Email: ${email}`);
   };
 
-  const handleCreateAccount = () => {
-    navigate("/create-account");
-  };
-
   return (
     <div style={styles.container}>
       <h2 style={styles.heading}>Login</h2>
@@ -92,9 +87,9 @@ function Login() {
       <button style={styles.button} onClick={handleLogin}>
         Login
       </button>
-      <div style={styles.createAccount} onClick={handleCreateAccount}>
+      <Link to="/createaccount" style={styles.createAccount}>
         Create Account
-      </div>
+      </Link>
     </div>
   );
 }
