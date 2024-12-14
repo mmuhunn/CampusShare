@@ -6,6 +6,7 @@ import Board from "./pages/Board";
 import Login from "./pages/Login";
 import CreateAccount from "./pages/CreateAccount";
 import SubjectList from "./pages/SubjectList";
+import PopularPosts from "./pages/PopularPosts"; // 추가
 
 function App() {
   return (
@@ -14,13 +15,15 @@ function App() {
       <Routes>
         <Route path="/" element={<Home />} />
         <Route path="/subjectlist" element={<SubjectList />} />
-        <Route path="/board/:subject" element={<Board />} /> {/* 동적 경로 */}
+        <Route path="/board/:subject" element={<Board />} />
         <Route path="/login" element={<Login />} />
         <Route path="/create-account" element={<CreateAccount />} />
+        <Route path="/popular-posts" element={<PopularPosts />} /> {/* 추가 */}
       </Routes>
     </Router>
   );
 }
+
 
 export default App;
 
