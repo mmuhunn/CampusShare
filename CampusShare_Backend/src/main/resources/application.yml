@@ -1,11 +1,41 @@
 spring:
   datasource:
-    url: jdbc:mysql://localhost:3306/your_database
-    username: your_username
-    password: your_password
+    url: jdbc:mysql://localhost:3306/on-time?serverTimezone=Asia/Seoul
+    username: developer
+    password: ontime24
+    driver-class-name: com.mysql.cj.jdbc.Driver
   jpa:
     hibernate:
       ddl-auto: update
     show-sql: true
+    properties:
+      hibernate:
+        format_sql: true
+        dialect: org.hibernate.dialect.MySQL8Dialect
+  jackson:
+    time-zone: Asia/Seoul
+
+springdoc:
+  api-docs:
+    path: /v3/api-docs
+  swagger-ui:
+    path: /swagger-ui.html
+    display-request-duration: true
+    operations-sorter: alpha
+
+jwt:
+  secret: c2lsdmVybmluZS10ZWNoLXNwcmluZy1ib290LWp3dC10dXRvcmlhbC1zZWNyZXQtc2lsdmVybmluZS10ZWNoLXNwcmluZy1ib290LWp3dC10dXRvcmlhbC1zZWNyZXQK
+  access-token-validity-in-seconds: 3600
+  refresh-token-validity-in-seconds: 1209600
+
 server:
-  port: 8080
+  forward-headers-strategy: FRAMEWORK
+
+oauth:
+  client:
+    registration:
+      google:
+        client-id: 14090316638-7ka4jgjg1oncueic2ki64pgiso6532fm.apps.googleusercontent.com
+        scope:
+          - profile
+          - email
