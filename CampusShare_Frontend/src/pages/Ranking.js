@@ -132,7 +132,7 @@ function Home() {
 
   const fetchPopularPosts = () => {
     const mockPopularPosts = [
-      { id: 1, title: "React Basics", excerpt: "Learn React", subject: "react-basics" },
+      { id: 1, title: "Who is your favorite Professor", excerpt: "Josué Obregón", subject: "Who is your favorite professor" },
       { id: 2, title: "JavaScript Tips", excerpt: "Master JS", subject: "js-tips" },
       { id: 3, title: "CSS Tricks", excerpt: "Style it!", subject: "css-tricks" },
     ];
@@ -143,9 +143,9 @@ function Home() {
     // 실제 백엔드 연동 시 여기에 API 호출 로직 추가
     // 지금은 mock 데이터
     const mockRanking = [
-      { position: 1, name: "사용자A", score: "기여: 200회" },
-      { position: 2, name: "사용자B", score: "기여: 150회" },
-      { position: 3, name: "사용자C", score: "기여: 100회" },
+      { position: 1, name: "Josué Obregón", score: "기여: 200회" },
+      { position: 2, name: "Sué Dragon", score: "기여: 150회" },
+      { position: 3, name: "Muhun", score: "기여: 100회" },
     ];
     setRankingData(mockRanking);
   };
