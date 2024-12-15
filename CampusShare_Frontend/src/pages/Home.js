@@ -1,6 +1,5 @@
 import React, { useEffect, useState } from "react";
 import { Link } from "react-router-dom";
-import axios from "axios";
 
 const styles = {
   heading: {
@@ -11,22 +10,41 @@ const styles = {
     textAlign: "center",
     margin: "20px 0",
   },
-  popularPosts: {
+  subText: {
+    textAlign: "center",
+    color: "#6b4f4f",
+    marginBottom: "20px",
+    fontSize: "1.2rem",
+  },
+  popularPostsContainer: {
     marginTop: "40px",
     maxWidth: "800px",
     margin: "0 auto",
-    textAlign: "center",
-  },
-  postCard: {
-    padding: "15px",
-    backgroundColor: "#fff",
-    borderRadius: "8px",
-    boxShadow: "0 2px 5px rgba(0, 0, 0, 0.1)",
-    margin: "10px 0",
     textAlign: "left",
-    textDecoration: "none",
-    color: "#6b4f4f",
+  },
+  postList: {
+    listStyleType: "none",
+    padding: 0,
+  },
+  postItem: {
+    display: "flex",
+    justifyContent: "space-between",
+    alignItems: "center",
+    padding: "15px 20px",
+    marginBottom: "10px",
+    borderRadius: "8px",
+    backgroundColor: "#fff",
+    boxShadow: "0 2px 5px rgba(0, 0, 0, 0.1)",
+  },
+  postTitle: {
+    color: "#6b4f4f", // 글씨 색상을 갈색으로 변경
     fontSize: "1.1rem",
+    fontWeight: "bold",
+    textDecoration: "none",
+  },
+  postTime: {
+    color: "#6b4f4f", // 글씨 색상을 갈색으로 변경
+    fontSize: "0.9rem",
   },
   viewAllLink: {
     display: "inline-block",
@@ -38,57 +56,56 @@ const styles = {
     textDecoration: "none",
     fontWeight: "600",
     transition: "background-color 0.3s ease",
+    textAlign: "center",
   },
 };
 
 function Home() {
   const [popularPosts, setPopularPosts] = useState([]);
 
-  // Fetch popular posts when the component is mounted
   useEffect(() => {
+    // Fetch or simulate fetching data for popular posts
     fetchPopularPosts();
   }, []);
 
-  const fetchPopularPosts = async () => {
-    try {
-      const response = await axios.get("http://localhost:8080/popular-posts"); // API URL
-      setPopularPosts(response.data);
-    } catch (error) {
-      console.error("Error fetching popular posts:", error);
-    }
+  const fetchPopularPosts = () => {
+    const mockPosts = [
+      { id: 1, title: "How to improve your writing skills", time: "2 years ago" },
+      { id: 2, title: "I think Josué is the best professor", time: "3 months ago" },
+      { id: 3, title: "Understanding Calculus: Tips and Tricks", time: "9months ago" },
+      { id: 4, title: "Best practices for effective teamwork", time: "1 year ago" },
+      { id: 5, title: "Exploring data structures in Python", time: "2 months ago" },
+    ];
+    setPopularPosts(mockPosts);
   };
 
   return (
     <div className="page-container">
-      {/* Heading Section */}
+      {/* Welcome Section */}
       <h1 style={styles.heading}>Welcome to CampusShare!</h1>
-      <p style={{ textAlign: "center", color: "#6b4f4f", marginBottom: "20px" }}>
+      <p style={styles.subText}>
         A collaborative space for mutual learning and growth.
       </p>
 
       {/* Popular Posts Section */}
-      <div style={styles.popularPosts}>
-        <h2>Popular Posts</h2>
-        {popularPosts.length > 0 ? (
-          popularPosts.slice(0, 3).map((post) => (
-            <Link
-              key={post.id}
-              to={`/board/${post.subject}`}
-              style={styles.postCard}
-            >
-              <h3>{post.title}</h3>
-              <p>{post.excerpt}</p>
-            </Link>
-          ))
-        ) : (
-          <p>Loading popular posts...</p>
-        )}
-        {/* Link to view all popular posts */}
+      <div style={styles.popularPostsContainer}>
+        <h2 style={styles.heading}>Popular Posts</h2>
+        <ul style={styles.postList}>
+          {popularPosts.map((post) => (
+            <li key={post.id} style={styles.postItem}>
+              <Link to={`/board/${post.id}`} style={styles.postTitle}>
+                {post.title}
+              </Link>
+              <span style={styles.postTime}>{post.time}</span>
+            </li>
+          ))}
+        </ul>
         <Link to="/popular-posts" style={styles.viewAllLink}>
           View All Popular Posts
         </Link>
       </div>
 
+      {/* View Rankings Button */}
       <div style={{ textAlign: "center", marginTop: "30px" }}>
         <Link to="/ranking" style={styles.viewAllLink}>
           View Rankings
