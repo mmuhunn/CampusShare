@@ -36,7 +36,7 @@ Check out the live demo: [`CampusShare_Homepage`](https://charming-creponne-154b
 
 
 ## 🛠️ Getting Started
-To get the project up and running locally:
+To get the react project up and running locally:
 1. Clone the repository:
     ```bash
     git clone https://github.com/mmuhunn/CampusShare.git
@@ -51,6 +51,22 @@ To get the project up and running locally:
     npm start
     ```
 4. Open your browser at 'https://charming-creponne-154b37.netlify.app/'.
+
+To get the Spring project up and running locally:
+1. Clone the repository:
+    ```bash
+    git clone https://github.com/mmuhunn/CampusShare.git
+    cd CampusShare
+    ```
+2. Open IDE:
+    ```bash
+    bulid the gradle project
+    ```
+3. Run the application:
+    ```bash
+    run "CampusShareBackendAplication"
+    ```
+4. Open your results "http://localhost:8080".
 
 ## 🤝 Contributing
 We welcome contributions! Please read our [Contributing Guidelines](CONTRIBUTING.md) for more information.

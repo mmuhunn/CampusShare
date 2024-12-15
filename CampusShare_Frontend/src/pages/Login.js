@@ -1,5 +1,7 @@
-import React, { useState } from "react"; // useState를 추가로 import
-import { useNavigate } from "react-router-dom";
+
+import React, { useState } from "react";
+import { Link, useNavigate } from "react-router-dom";
+
 
 const styles = {
   container: {
@@ -41,7 +43,6 @@ const styles = {
     marginTop: "20px",
     fontSize: "0.9rem",
     color: "#6b4f4f",
-    cursor: "pointer",
     textDecoration: "underline",
   },
 };
@@ -66,9 +67,11 @@ function Login() {
     alert(`Logged in with Email: ${email}`); // 성공적으로 로그인 시 알림
   };
 
+
   const handleCreateAccount = () => {
     navigate("/create-account"); // 계정 생성 페이지로 이동
   };
+
 
   return (
     <div style={styles.container}>
@@ -92,9 +95,9 @@ function Login() {
       <button style={styles.button} onClick={handleLogin}>
         Login
       </button>
-      <div style={styles.createAccount} onClick={handleCreateAccount}>
+      <Link to="/createaccount" style={styles.createAccount}>
         Create Account
-      </div>
+      </Link>
     </div>
   );
 }
