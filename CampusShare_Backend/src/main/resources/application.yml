@@ -14,7 +14,18 @@ spring:
         dialect: org.hibernate.dialect.MySQL8Dialect
   jackson:
     time-zone: Asia/Seoul
+  spring:
+   web:
+     resources:
+      static-locations: classpath:/static/
+
+springdoc:
+  api-docs:
+    path: /api-docs
+  swagger-ui:
+    tags-sorter: alpha
+    disable-swagger-default-url: 'true'
+    path: /swagger-ui.html
 
 server:
-  forward-headers-strategy: FRAMEWORK
-
+  port: 8080
