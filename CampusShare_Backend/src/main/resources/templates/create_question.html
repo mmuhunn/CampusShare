@@ -1,0 +1,21 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Create Question</title>
+</head>
+<body>
+<h1>Create Question</h1>
+<form action="/api/question/create" method="post">
+    <label for="studentID">Student ID:</label>
+    <input type="text" id="studentID" name="studentID" required><br>
+
+    <label for="content">Content:</label>
+    <textarea id="content" name="content" required></textarea><br>
+
+    <button type="submit">Submit Question</button>
+</form>
+<a href="qna_dashboard.html">Back to QnA Board</a>
+</body>
+</html>

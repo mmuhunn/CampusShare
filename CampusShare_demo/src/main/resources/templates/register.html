@@ -1,0 +1,111 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Campus Share - Register</title>
+    <style>
+        body {
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+            justify-content: center;
+            height: 100vh;
+            margin: 0;
+            font-family: Arial, sans-serif;
+            background-color: #f8f9fa;
+        }
+        h1 {
+            font-size: 2.5rem;
+            margin-bottom: 20px;
+            color: #333;
+        }
+        form {
+            display: flex;
+            flex-direction: column;
+            width: 300px;
+        }
+        input {
+            margin-bottom: 15px;
+            padding: 10px;
+            font-size: 1rem;
+            border: 1px solid #ced4da;
+            border-radius: 5px;
+            outline: none;
+        }
+        input::placeholder {
+            color: #6c757d;
+        }
+        input:focus {
+            border-color: #007bff;
+        }
+        .error-message {
+            color: red;
+            font-size: 0.9rem;
+            margin-bottom: 15px;
+            text-align: center;
+        }
+        button {
+            padding: 10px;
+            font-size: 1rem;
+            color: white;
+            background-color: #007bff;
+            border: none;
+            border-radius: 5px;
+            cursor: pointer;
+        }
+        button:hover {
+            background-color: #0056b3;
+        }
+    </style>
+</head>
+<body>
+<h1>Register</h1>
+<!-- Error message placeholder -->
+<div id="error-message" class="error-message"></div>
+<form id="register-form" method="POST" action="/register">
+    <input type="text" name="name" placeholder="Enter your name" required>
+    <input type="text" name="studentNumber" placeholder="Enter your student number" required>
+    <input type="password" name="password" placeholder="Enter your password" required>
+    <input type="password" name="confirmPassword" placeholder="Confirm your password" required>
+    <button type="submit">Register</button>
+</form>
+
+<script>
+    document.getElementById('register-form').onsubmit = async function(event) {
+        event.preventDefault(); // Prevent the form from submitting traditionally
+        const form = event.target;
+        const formData = new FormData(form);
+        const data = Object.fromEntries(formData.entries());
+
+        // Verify password confirmation
+        if (data.password !== data.confirmPassword) {
+            document.getElementById('error-message').innerText = "Passwords do not match.";
+            form.reset();
+            return;
+        }
+
+        // Send POST request
+        try {
+            const response = await fetch(form.action, {
+                method: form.method,
+                headers: {
+                    'Content-Type': 'application/x-www-form-urlencoded',
+                },
+                body: new URLSearchParams(data)
+            });
+
+            if (response.ok) {
+                window.location.href = "/"; // Redirect to home page on success
+            } else {
+                const error = await response.text();
+                document.getElementById('error-message').innerText = error;
+                form.reset(); // Reset the form
+            }
+        } catch (error) {
+            document.getElementById('error-message').innerText = "An error occurred. Please try again.";
+        }
+    };
+</script>
+</body>
+</html>
