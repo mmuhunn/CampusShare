@@ -1,166 +1,155 @@
 import React, { useState, useEffect } from "react";
-import { useParams } from "react-router-dom";
-import axios from "axios";
+import { useLocation, useNavigate } from "react-router-dom";
 
-function Board() {
-  const { subject } = useParams(); // Getting subject name parameter from URL
+const Board = ({ coursesData }) => {
+  const location = useLocation();
+  const navigate = useNavigate();
+  const searchParams = new URLSearchParams(location.search);
+  const grade = searchParams.get("grade");
+  const semester = searchParams.get("semester");
+  const course = searchParams.get("course");
+
   const [posts, setPosts] = useState([]);
-  const [title, setTitle] = useState("");
-  const [content, setContent] = useState("");
-  const [file, setFile] = useState(null);
+
+  // Sample posts for demonstration
+  const samplePosts = {
+    "1-1": [
+      { id: 1, title: "English Writing I - Assignment", content: "Write an essay about your hobbies.", course: "English Writing I" },
+      { id: 2, title: "Calculus I - Homework", content: "Solve problems from chapter 3.", course: "Calculus I" },
+      { id: 3, title: "Business Information Systems - Case Study", content: "Analyze the given case study.", course: "Business Information Systems" },
+    ],
+    "1-2": [
+      { id: 4, title: "Logical Writing - Assignment", content: "Write a persuasive essay.", course: "Logical Writing" },
+      { id: 5, title: "Programming Language - Project", content: "Develop a simple calculator in Python.", course: "Programming Language" },
+      { id: 6, title: "Statistical Analysis - Quiz", content: "Quiz scheduled for next week.", course: "Statistical Analysis" },
+    ],
+  };
 
   useEffect(() => {
-    fetchPosts();
-  }, [subject]);
-
-  const fetchPosts = async () => {
-    try {
-      const response = await axios.get(`http://localhost:8080/posts/${subject}`);
-      setPosts(response.data);
-    } catch (error) {
-      console.error("Error fetching posts:", error);
-    }
-  };
-
-  const handleUpload = async (e) => {
-    e.preventDefault();
-    const formData = new FormData();
-    formData.append("title", title);
-    formData.append("content", content);
-    formData.append("file", file);
-
-    try {
-      await axios.post(`http://localhost:8080/posts/${subject}`, formData);
-      alert("Upload Success");
-      setTitle("");
-      setContent("");
-      setFile(null);
-      fetchPosts(); // Update board list after upload
-    } catch (error) {
-      console.error("Error uploading post:", error);
-    }
-  };
-
-  const styles = {
-    container: {
-      maxWidth: "800px",
-      margin: "20px auto",
-      padding: "20px",
-      backgroundColor: "#f9f9f9",
-      borderRadius: "10px",
-      boxShadow: "0 2px 5px rgba(0, 0, 0, 0.1)",
-    },
-    heading: {
-      fontFamily: "'Poppins', sans-serif",
-      fontSize: "2rem",
-      fontWeight: "600",
-      color: "#6b4f4f",
-      textAlign: "center",
-      marginBottom: "20px",
-    },
-    form: {
-      backgroundColor: "#fff",
-      padding: "20px",
-      borderRadius: "10px",
-      boxShadow: "0 1px 3px rgba(0, 0, 0, 0.1)",
-      marginBottom: "30px",
-    },
-    input: {
-      width: "100%",
-      padding: "10px",
-      margin: "10px 0",
-      borderRadius: "5px",
-      border: "1px solid #ddd",
-      fontSize: "1rem",
-    },
-    button: {
-      padding: "10px 20px",
-      backgroundColor: "#6b4f4f",
-      color: "#fff",
-      border: "none",
-      borderRadius: "5px",
-      cursor: "pointer",
-      fontSize: "1rem",
-      marginTop: "10px",
-    },
-    postList: {
-      listStyleType: "none",
-      padding: 0,
-    },
-    postCard: {
-      backgroundColor: "#fff",
-      padding: "15px",
-      margin: "10px 0",
-      borderRadius: "10px",
-      boxShadow: "0 1px 3px rgba(0, 0, 0, 0.1)",
-    },
-    postTitle: {
-      fontSize: "1.2rem",
-      fontWeight: "600",
-      color: "#6b4f4f",
-      marginBottom: "10px",
-    },
-    postContent: {
-      fontSize: "1rem",
-      color: "#555",
-    },
-    downloadLink: {
-      marginTop: "10px",
-      display: "inline-block",
-      color: "#6b4f4f",
-      textDecoration: "none",
-      fontWeight: "600",
-    },
-  };
+    const key = `${grade}-${semester}`;
+    const filteredPosts = course
+      ? (samplePosts[key] || []).filter((post) => post.course === course)
+      : samplePosts[key] || [];
+    setPosts(filteredPosts);
+  }, [grade, semester, course]);
 
   return (
     <div style={styles.container}>
-      <h1 style={styles.heading}>{subject.replace(/-/g, " ")} Board</h1>
-      <form style={styles.form} onSubmit={handleUpload}>
-        <h2>Write New</h2>
-        <input
-          type="text"
-          value={title}
-          onChange={(e) => setTitle(e.target.value)}
-          placeholder="Title"
-          style={styles.input}
-          required
-        />
-        <textarea
-          value={content}
-          onChange={(e) => setContent(e.target.value)}
-          placeholder="Contents"
-          style={styles.input}
-          rows="5"
-          required
-        />
-        <input
-          type="file"
-          onChange={(e) => setFile(e.target.files[0])}
-          style={styles.input}
-          required
-        />
-        <button type="submit" style={styles.button}>
-          Upload
-        </button>
-      </form>
+      <h2 style={styles.heading}>
+        Posts for Grade {grade}, Semester {semester}
+      </h2>
+      <div style={styles.filters}>
+  {/* Show All 버튼 추가 */}
+  <button
+    style={styles.showAllButton}
+    onClick={() => navigate(`/board?grade=${grade}&semester=${semester}`)}
+  >
+    Show All
+  </button>
+  {coursesData.map((courseName) => (
+    <button
+      key={courseName}
+      style={styles.filterButton}
+      onClick={() =>
+        navigate(`/board?grade=${grade}&semester=${semester}&course=${courseName}`)
+      }
+    >
+      {courseName}
+    </button>
+  ))}
+</div>
+
       <ul style={styles.postList}>
         {posts.map((post) => (
           <li key={post.id} style={styles.postCard}>
-            <h3 style={styles.postTitle}>{post.title}</h3>
-            <p style={styles.postContent}>{post.content}</p>
-            <a
-              href={`http://localhost:8080/files/${post.filePath}`}
-              style={styles.downloadLink}
-              download
-            >
-              file download
-            </a>
+            <div style={styles.postTitle}>{post.title}</div>
+            <div style={styles.postContent}>{post.content}</div>
           </li>
         ))}
       </ul>
+      <button style={styles.writeButton} onClick={() => navigate("/newpost")}>
+        Write
+      </button>
     </div>
+    
   );
-}
+};
+
+const styles = {
+  container: {
+    maxWidth: "800px",
+    margin: "20px auto",
+    padding: "20px",
+    backgroundColor: "#f9f9f9",
+    borderRadius: "10px",
+    boxShadow: "0 2px 5px rgba(0, 0, 0, 0.1)",
+  },
+  heading: {
+    fontSize: "1.5rem",
+    fontWeight: "600",
+    textAlign: "center",
+    color: "#333",
+  },
+  filters: {
+    display: "flex",
+    flexWrap: "wrap",
+    gap: "10px",
+    marginTop: "20px",
+    justifyContent: "center",
+  },
+  filterButton: {
+    padding: "8px 15px",
+    backgroundColor: "#6b4f4f",
+    color: "#fff",
+    border: "none",
+    borderRadius: "5px",
+    cursor: "pointer",
+    transition: "background-color 0.3s ease",
+  },
+  postList: {
+    listStyle: "none",
+    padding: 0,
+  },
+  postCard: {
+    backgroundColor: "#fff",
+    padding: "15px",
+    margin: "10px 0",
+    borderRadius: "10px",
+    boxShadow: "0 1px 3px rgba(0, 0, 0, 0.1)",
+  },
+  postTitle: {
+    fontSize: "1.2rem",
+    fontWeight: "600",
+    color: "#6b4f4f",
+  },
+  postContent: {
+    fontSize: "1rem",
+    color: "#555",
+    marginTop: "5px",
+  },
+  writeButton: {
+    marginTop: "20px",
+    padding: "15px 30px", // 크기 증가
+    backgroundColor: "#6b4f4f", // 과목명 버튼과 동일한 색상
+    color: "#fff",
+    border: "none",
+    borderRadius: "5px",
+    cursor: "pointer",
+    fontSize: "18px", // 글씨 크기 증가
+    display: "block",
+    margin: "20px auto",
+    transition: "background-color 0.3s ease",
+  },
+  showAllButton: {
+    padding: "8px 15px",
+    backgroundColor: "#aaa", // Show All 버튼 색상
+    color: "#fff",
+    border: "none",
+    borderRadius: "5px",
+    cursor: "pointer",
+    fontWeight: "bold",
+    transition: "background-color 0.3s ease",
+  },
+};
 
 export default Board;
