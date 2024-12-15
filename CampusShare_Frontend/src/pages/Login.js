@@ -1,5 +1,7 @@
+
 import React, { useState } from "react";
 import { Link, useNavigate } from "react-router-dom";
+
 
 const styles = {
   container: {
@@ -46,12 +48,12 @@ const styles = {
 };
 
 function Login() {
-  const [email, setEmail] = useState("");
-  const [password, setPassword] = useState("");
-  const navigate = useNavigate();
+  const [email, setEmail] = useState(""); // useState로 email 상태 정의
+  const [password, setPassword] = useState(""); // useState로 password 상태 정의
+  const navigate = useNavigate(); // 페이지 이동을 위한 useNavigate
 
   const handleLogin = () => {
-    const emailRegex = /^[^\s@]+@[^\s@]+\.[^\s@]+$/;
+    const emailRegex = /^[^\s@]+@[^\s@]+\.[^\s@]+$/; // 이메일 검증 정규식
     if (!emailRegex.test(email)) {
       alert("Please enter a valid email address.");
       return;
@@ -62,8 +64,14 @@ function Login() {
       return;
     }
 
-    alert(`Logged in with Email: ${email}`);
+    alert(`Logged in with Email: ${email}`); // 성공적으로 로그인 시 알림
   };
+
+
+  const handleCreateAccount = () => {
+    navigate("/create-account"); // 계정 생성 페이지로 이동
+  };
+
 
   return (
     <div style={styles.container}>
@@ -73,7 +81,7 @@ function Login() {
         placeholder="Email"
         style={styles.input}
         value={email}
-        onChange={(e) => setEmail(e.target.value)}
+        onChange={(e) => setEmail(e.target.value)} // email 입력 핸들러
         required
       />
       <input
@@ -81,7 +89,7 @@ function Login() {
         placeholder="Password"
         style={styles.input}
         value={password}
-        onChange={(e) => setPassword(e.target.value)}
+        onChange={(e) => setPassword(e.target.value)} // password 입력 핸들러
         required
       />
       <button style={styles.button} onClick={handleLogin}>

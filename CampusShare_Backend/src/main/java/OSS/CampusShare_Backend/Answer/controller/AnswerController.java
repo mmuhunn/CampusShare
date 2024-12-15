@@ -2,6 +2,11 @@ package OSS.CampusShare_Backend.Answer.controller;
 
 import OSS.CampusShare_Backend.Answer.domain.Answer;
 import OSS.CampusShare_Backend.Answer.service.AnswerService;
+import io.swagger.v3.oas.annotations.Operation;
+import io.swagger.v3.oas.annotations.tags.Tag;
+import lombok.AccessLevel;
+import lombok.NoArgsConstructor;
+import lombok.RequiredArgsConstructor;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.http.ResponseEntity;
 import org.springframework.web.bind.annotation.*;
@@ -10,15 +15,19 @@ import java.util.List;
 
 @RestController
 @RequestMapping("/api/answer")
+@RequiredArgsConstructor(access = AccessLevel.PROTECTED)
+@Tag(name = "Answer API", description = "Operations related to answers")
 public class AnswerController {
   private final AnswerService answerService;
 
-  @Autowired
-  public AnswerController(AnswerService answerService) {
-    this.answerService = answerService;
-  }
+
+//  @Autowired
+//  public AnswerController(AnswerService answerService) {
+//    this.answerService = answerService;
+//  }
 
   // Endpoint to create a new answer
+  @Operation(summary = "Create a new answer", description = "Create a new answer for a specific question")
   @PostMapping("/create")
   public ResponseEntity<Answer> createAnswer(@RequestParam Long questionId,
                                              @RequestParam String studentID,

@@ -2,6 +2,8 @@ package OSS.CampusShare_Backend.question.service;
 
 import OSS.CampusShare_Backend.question.domain.Question;
 import OSS.CampusShare_Backend.question.repository.QuestionRepository;
+import jakarta.transaction.Transactional;
+import lombok.AllArgsConstructor;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
@@ -9,13 +11,15 @@ import java.util.List;
 import java.util.Optional;
 
 @Service
+@AllArgsConstructor
+@Transactional
 public class QuestionService {
   private final QuestionRepository questionRepository;
 
-  @Autowired
-  public QuestionService(QuestionRepository questionRepository) {
-    this.questionRepository = questionRepository;
-  }
+//  @Autowired
+//  public QuestionService(QuestionRepository questionRepository) {
+//    this.questionRepository = questionRepository;
+//  }
 
   // Method to create a new question
   public Question createQuestion(String studentID, String content) {

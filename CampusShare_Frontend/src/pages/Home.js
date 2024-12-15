@@ -1,4 +1,6 @@
-import React from "react";
+import React, { useEffect, useState } from "react";
+import { Link } from "react-router-dom";
+import axios from "axios";
 
 const styles = {
   heading: {
@@ -9,43 +11,88 @@ const styles = {
     textAlign: "center",
     margin: "20px 0",
   },
-  about: {
-    fontFamily: "'Poppins', sans-serif",
-    fontSize: "1rem",
-    lineHeight: "1.6",
-    color: "#555", // 부드러운 텍스트 색상
+  popularPosts: {
+    marginTop: "40px",
     maxWidth: "800px",
-    margin: "20px auto", // 중앙 정렬
-    padding: "10px",
-    textAlign: "justify", // 양쪽 정렬
-    backgroundColor: "#f9f9f9", // 부드러운 배경색
+    margin: "0 auto",
+    textAlign: "center",
+  },
+  postCard: {
+    padding: "15px",
+    backgroundColor: "#fff",
     borderRadius: "8px",
     boxShadow: "0 2px 5px rgba(0, 0, 0, 0.1)",
+    margin: "10px 0",
+    textAlign: "left",
+    textDecoration: "none",
+    color: "#6b4f4f",
+    fontSize: "1.1rem",
+  },
+  viewAllLink: {
+    display: "inline-block",
+    marginTop: "20px",
+    padding: "10px 20px",
+    backgroundColor: "#6b4f4f",
+    color: "#fff",
+    borderRadius: "5px",
+    textDecoration: "none",
+    fontWeight: "600",
+    transition: "background-color 0.3s ease",
   },
 };
 
 function Home() {
-  return (
+  const [popularPosts, setPopularPosts] = useState([]);
 
+  // Fetch popular posts when the component is mounted
+  useEffect(() => {
+    fetchPopularPosts();
+  }, []);
+
+  const fetchPopularPosts = async () => {
+    try {
+      const response = await axios.get("http://localhost:8080/popular-posts"); // API URL
+      setPopularPosts(response.data);
+    } catch (error) {
+      console.error("Error fetching popular posts:", error);
+    }
+  };
+
+  return (
     <div className="page-container">
+      {/* Heading Section */}
       <h1 style={styles.heading}>Welcome to CampusShare!</h1>
-      <div style={styles.about}>
-        <h2>About CampusShare</h2>
-        <p>
-          CampusShare is a collaborative platform designed to connect ITM students by sharing academic resources and fostering a supportive learning community. Our mission is to empower students through collaboration and innovation, leaving a legacy of valuable knowledge for future learners.
-        </p>
-        <h3>What We Offer:</h3>
-        <ul>
-          <li>A space to <strong>upload and download lecture materials, assignment guides, and summarized notes</strong>.</li>
-          <li>A <strong>comment and feedback system</strong> to facilitate communication and enhance understanding.</li>
-          <li>Tools for <strong>evaluating lectures and professors</strong>, offering insights into teaching styles and preferences.</li>
-          <li>A <strong>participation ranking system</strong> to recognize contributions and encourage active involvement.</li>
-        </ul>
-        <h3>Our Vision:</h3>
-        <p>
-          Build a <strong>sustainable academic platform</strong> for recording and referencing experiences. Expand beyond ITM to include students from other departments and universities. Lay the groundwork for teamwork and potential contributions to <strong>open-source projects</strong>.
-        </p>
-        <p>CampusShare is more than just a resource hub; it’s a growing community that thrives on <strong>collaboration, resource sharing, and continuous improvement</strong>. Join us in shaping a brighter academic future!</p>
+      <p style={{ textAlign: "center", color: "#6b4f4f", marginBottom: "20px" }}>
+        A collaborative space for mutual learning and growth.
+      </p>
+
+      {/* Popular Posts Section */}
+      <div style={styles.popularPosts}>
+        <h2>Popular Posts</h2>
+        {popularPosts.length > 0 ? (
+          popularPosts.slice(0, 3).map((post) => (
+            <Link
+              key={post.id}
+              to={`/board/${post.subject}`}
+              style={styles.postCard}
+            >
+              <h3>{post.title}</h3>
+              <p>{post.excerpt}</p>
+            </Link>
+          ))
+        ) : (
+          <p>Loading popular posts...</p>
+        )}
+        {/* Link to view all popular posts */}
+        <Link to="/popular-posts" style={styles.viewAllLink}>
+          View All Popular Posts
+        </Link>
+      </div>
+
+      <div style={{ textAlign: "center", marginTop: "30px" }}>
+        <Link to="/ranking" style={styles.viewAllLink}>
+          View Rankings
+        </Link>
       </div>
     </div>
   );

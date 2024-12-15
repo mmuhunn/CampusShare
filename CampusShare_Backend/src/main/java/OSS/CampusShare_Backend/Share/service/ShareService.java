@@ -4,6 +4,8 @@ import OSS.CampusShare_Backend.Share.domain.Share;
 import OSS.CampusShare_Backend.Share.repository.ShareRepository;
 import OSS.CampusShare_Backend.User.domain.User;
 import OSS.CampusShare_Backend.User.service.UserService;
+import jakarta.transaction.Transactional;
+import lombok.AllArgsConstructor;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
@@ -11,16 +13,18 @@ import java.util.List;
 import java.util.Optional;
 
 @Service
+@AllArgsConstructor
+@Transactional
 public class ShareService {
 
     private final ShareRepository shareRepository;
     private final UserService userService;
 
-    @Autowired
-    public ShareService(ShareRepository shareRepository, UserService userService) {
-        this.shareRepository = shareRepository;
-        this.userService = userService;
-    }
+//    @Autowired
+//    public ShareService(ShareRepository shareRepository, UserService userService) {
+//        this.shareRepository = shareRepository;
+//        this.userService = userService;
+//    }
 
     // upload
     public Share uploadContent(String studentNumber, String title, String content, String file) {
