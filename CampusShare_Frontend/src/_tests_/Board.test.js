@@ -16,7 +16,8 @@ describe("Board Component", () => {
       </MemoryRouter>
     );
 
-    expect(screen.getByText((content) => content.includes("Posts for Grade"))).toBeInTheDocument();
+    expect(screen.getByRole('heading', { name: /Posts for Grade/i })).toBeInTheDocument();
+});
   });
 
   test("filters posts when a filter button is clicked", () => {
@@ -46,4 +47,4 @@ describe("Board Component", () => {
     expect(screen.getByText(/Course 1/i)).toBeInTheDocument();
     expect(screen.getByText(/Course 2/i)).toBeInTheDocument();
   });
-});
+
