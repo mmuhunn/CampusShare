@@ -1,40 +1,48 @@
-name: Node.js CI
+
+name: Node.js CI Pipeline
 
 on:
   push:
-    branches: [ "main", "testBranch" ]
+    branches:
+      - testBranch
   pull_request:
-    branches: [ "main", "testBranch" ]
+    branches:
+      - testBranch
+
 
 jobs:
   build:
     runs-on: ubuntu-latest
 
-    strategy:
-      matrix:
-        node-version: [18.x, 20.x, 22.x]
 
     steps:
-      - uses: actions/checkout@v4
+    # Checkout the repository
+    - name: Checkout code
+      uses: actions/checkout@v3
 
-      - name: Use Node.js ${{ matrix.node-version }}
-        uses: actions/setup-node@v4
-        with:
-          node-version: ${{ matrix.node-version }}
-          cache: 'npm'
-          cache-dependency-path: '**/package-lock.json'
+    # Set up Node.js environment
+    - name: Setup Node.js
+      uses: actions/setup-node@v3
+      with:
+        node-version: 16  # 원하는 Node.js 버전을 지정
 
-      - name: Clean NPM Cache and Install Dependencies
-        run: |
-          npm cache clean --force
-          npm ci
-        working-directory: .
+    # Install dependencies
+    - name: Install dependencies
+      run: npm install
 
-      - name: Print Node and NPM Versions
-        run: |
-          node -v
-          npm -v
+    # Run tests
+    - name: Run tests
+      run: npm test
 
-      - name: Run Tests
-        run: npm test
-        working-directory: .
+    # Build the project (optional, if your project requires a build step)
+    - name: Build project
+      run: npm run build
+
+    # Optionally upload test results or artifacts
+    - name: Archive test results
+      if: always()
+      uses: actions/upload-artifact@v3
+      with:
+        name: test-results
+        path: ./test-results  # 테스트 결과 파일 경로 지정
+
