@@ -91,15 +91,15 @@ function Home() {
       <div style={styles.popularPostsContainer}>
         <h2 style={styles.heading}>Popular Posts</h2>
         <ul style={styles.postList}>
-          {popularPosts.map((post) => (
-            <li key={post.id} style={styles.postItem}>
-              <Link to={`/board/${post.id}`} style={styles.postTitle}>
-                {post.title}
-              </Link>
-              <span style={styles.postTime}>{post.time}</span>
-            </li>
-          ))}
-        </ul>
+  {popularPosts.map((post) => (
+    <li key={post.id} style={styles.postItem}>
+      <span style={styles.postTitle}>
+        {post.title}
+      </span>
+      <span style={styles.postTime}>{post.time}</span>
+    </li>
+  ))}
+</ul>
         <Link to="/popular-posts" style={styles.viewAllLink}>
           View All Popular Posts
         </Link>
