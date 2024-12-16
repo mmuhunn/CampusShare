@@ -1,57 +1,40 @@
-name: Frontend Unit Test Workflow
+name: Node.js CI
 
 on:
   push:
-    branches:
-      - main
-      - testBranch
+    branches: [ "main", "testBranch" ]
   pull_request:
-    branches:
-      - main
-      - testBranch
+    branches: [ "main", "testBranch" ]
 
 jobs:
-  test:
-    name: Run Jest Tests
+  build:
     runs-on: ubuntu-latest
+
     strategy:
       matrix:
-        node-version: [18.x, 20.x, 22.x] # 여러 Node.js 버전에서 테스트 실행
+        node-version: [18.x, 20.x, 22.x]
 
     steps:
-      # 1. Checkout the code from the repository
-      - name: Checkout Repository
-        uses: actions/checkout@v3
+      - uses: actions/checkout@v4
 
-      # 2. Set up Node.js environment
-      - name: Set up Node.js ${{ matrix.node-version }}
-        uses: actions/setup-node@v3
+      - name: Use Node.js ${{ matrix.node-version }}
+        uses: actions/setup-node@v4
         with:
           node-version: ${{ matrix.node-version }}
+          cache: 'npm'
+          cache-dependency-path: '**/package-lock.json'
 
-      # 3. Cache Node Modules for faster builds
-      - name: Cache Node Modules
-        uses: actions/cache@v3
-        with:
-          path: ~/.npm
-          key: ${{ runner.os }}-node-${{ matrix.node-version }}-${{ hashFiles('**/package-lock.json') }}
-          restore-keys: |
-            ${{ runner.os }}-node-${{ matrix.node-version }}
+      - name: Clean NPM Cache and Install Dependencies
+        run: |
+          npm cache clean --force
+          npm ci
+        working-directory: .
 
-      # 4. Install dependencies using npm ci
-      - name: Install Dependencies
-        run: npm ci
+      - name: Print Node and NPM Versions
+        run: |
+          node -v
+          npm -v
 
-      # 5. Run Jest tests
-      - name: Run Tests with Jest
+      - name: Run Tests
         run: npm test
-
-      # 6. Report coverage (optional)
-      - name: Upload Test Coverage Report
-        uses: codecov/codecov-action@v3
-        with:
-          token: ${{ secrets.CODECOV_TOKEN }}
-          files: ./coverage/*.json
-          flags: unittests
-          name: frontend-tests
-          fail_ci_if_error: true
+        working-directory: .
