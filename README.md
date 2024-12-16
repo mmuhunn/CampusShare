@@ -78,8 +78,6 @@ We welcome contributions! Please read below list for more information.
 This project is licensed under the MIT License - see the [LICENSE](LICENSE) file for details.
 
 
-[Contributing Guidelines](Contributing%20Guidelines.md)
-
 
 <div style="text-align: left;">
     <h2 style="border-bottom: 1px solid #d8dee4; color: #282d33;"> 🛠️ Tech Stacks </h2> <br> 
