@@ -29,7 +29,7 @@ public class SearchContentByTitleTest {
 
         List<Share> results = shareService.searchContentByTitle("Matching");
 
-        assertThat(results).hasSize(1);
+        assertThat(results).hasSize(2);
         assertThat(results.get(0).getTitle()).isEqualTo("Matching Title");
     }
 }
