@@ -16,9 +16,6 @@ CampusShare aims to create a community where academic resources and assignment a
 - Expand the platform for use by students from other schools.
 - Evlove from a department-level community to an inter-university collaboration platform.
 
-## 🚀 Demo
-Check out the live demo: [`CampusShare_Homepage`](https://charming-creponne-154b37.netlify.app/).
-
 ## ✨ Features
 - 📝 Create, edit, and delete posts on a bulletin board
 - 🔍 Search posts by keywords or categories
@@ -26,8 +23,8 @@ Check out the live demo: [`CampusShare_Homepage`](https://charming-creponne-154b
 - 🌟 Coming Soon: Notifications and real-time chat
 
 ## 📸 Screenshots
-<img src="https://github.com/user-attachments/assets/4e72468d-64a1-4313-9af0-e5358cbecfee" alt="CampusShare Home" width="300" />
-<img src="https://github.com/user-attachments/assets/27166d74-db21-4421-80a6-ed8b103f7b34" alt="CampusShare Boards" width="300" />
+<img src="https://github.com/user-attachments/assets/e605b425-7597-4276-b72e-8c9f6c78f1a7" alt="CampusShare Home" width="300" />
+<img src="https://github.com/user-attachments/assets/8c352d9a-b5e0-491e-97e0-edc7941f149b" alt="CampusShare Boards" width="300" />
 <img src="https://github.com/user-attachments/assets/382ccfbe-61a2-4ae1-bbc7-012236904e85" alt="CampusShare Login" width="300" />
 
 
@@ -47,8 +44,7 @@ To get the react project up and running locally:
 3. Start the development server:
     ```bash
     npm start
-    ```
-4. Open your browser at 'https://charming-creponne-154b37.netlify.app/'.
+    ```.
 
 To get the Spring project up and running locally:
 1. Clone the repository:
