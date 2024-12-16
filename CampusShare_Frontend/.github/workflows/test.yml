@@ -1,3 +1,4 @@
+
 name: Node.js CI Pipeline
 
 on:
@@ -8,9 +9,11 @@ on:
     branches:
       - testBranch
 
+
 jobs:
   build:
     runs-on: ubuntu-latest
+
 
     steps:
     # Checkout the repository
@@ -42,3 +45,4 @@ jobs:
       with:
         name: test-results
         path: ./test-results  # 테스트 결과 파일 경로 지정
+

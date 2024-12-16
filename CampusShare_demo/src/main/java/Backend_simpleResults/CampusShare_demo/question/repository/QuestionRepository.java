@@ -17,4 +17,6 @@ public interface QuestionRepository {
 
     // Delete a question by its unique ID
     void deleteById(Long id);
+
+    List<Question> findByContentContaining(String title);
 }

@@ -1,0 +1,87 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Question Details</title>
+    <style>
+        body {
+            font-family: Arial, sans-serif;
+            background-color: #f8f9fa;
+            margin: 0;
+            padding: 0;
+        }
+
+        .container {
+            width: 50%;
+            margin: 50px auto;
+            background-color: white;
+            padding: 20px;
+            border-radius: 10px;
+            box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
+        }
+
+        h1 {
+            margin-bottom: 20px;
+            font-size: 1.8rem;
+        }
+
+        .answers ul {
+            list-style: none;
+            padding: 0;
+        }
+
+        .answers li {
+            border-bottom: 1px solid #ddd;
+            padding: 10px 0;
+        }
+
+        textarea {
+            width: 100%;
+            height: 100px;
+            margin-top: 10px;
+            padding: 10px;
+            border: 1px solid #ddd;
+            border-radius: 5px;
+        }
+
+        button {
+            background-color: #007bff;
+            color: white;
+            border: none;
+            padding: 10px;
+            margin-top: 10px;
+            border-radius: 5px;
+            cursor: pointer;
+        }
+
+        a {
+            display: block;
+            margin-top: 20px;
+            text-align: center;
+            color: #007bff;
+        }
+    </style>
+</head>
+<body>
+<div class="container">
+    <!-- Question Title -->
+    <h1 th:text="${question.content}">Question Title</h1>
+
+    <!-- Answer List -->
+    <div class="answers">
+        <h3>Answers</h3>
+        <ul>
+            <li th:each="answer : ${answers}" th:text="${answer.content}">Answer</li>
+        </ul>
+    </div>
+
+    <form method="post" th:action="@{/qna/{id}/answer(id=${question.questionId})}">
+        <textarea name="content" placeholder="Write your answer here..." required></textarea>
+        <button type="submit">Submit</button>
+    </form>
+
+    <a href="/qna">Back to QnA Board</a>
+</div>
+</body>
+</html>
