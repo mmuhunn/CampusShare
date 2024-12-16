@@ -16,7 +16,7 @@ describe("Board Component", () => {
       </MemoryRouter>
     );
 
-    expect(screen.getByText("Posts for Grade")).toBeInTheDocument();
+    expect(screen.getByRole('heading', { name: /Posts for Grade/i })).toBeInTheDocument();
 });
   });
 
