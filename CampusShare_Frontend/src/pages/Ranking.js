@@ -143,9 +143,9 @@ function Home() {
     // 실제 백엔드 연동 시 여기에 API 호출 로직 추가
     // 지금은 mock 데이터
     const mockRanking = [
-      { position: 1, name: "Josué Obregón", score: "기여: 200회" },
-      { position: 2, name: "Sué Dragon", score: "기여: 150회" },
-      { position: 3, name: "Muhun", score: "기여: 100회" },
+      { position: 1, name: "Josué Obregón", score: "Contributing score: 170" },
+      { position: 2, name: "Sué Dragon", score: "Contributing score: 150" },
+      { position: 3, name: "G-Dragon", score: "Contributing score: 100" },
     ];
     setRankingData(mockRanking);
   };
