@@ -23,10 +23,10 @@ public class ShareService {
 
     // Upload content
     public Share uploadContent(String studentNumber, String title, String content, String file) {
-        User user = userService.findByStudentNumber(studentNumber);
-        Share share = new Share(studentNumber, title, content, file, user);
+        Share share = new Share(studentNumber, title, content, file, null);
         return shareRepository.save(share);
     }
+
 
     // Download content (increments download count)
     public boolean downloadContent(String uploadId) {
@@ -49,4 +49,10 @@ public class ShareService {
     public List<Share> searchContentByTitle(String title) {
         return shareRepository.findByTitleContaining(title);
     }
+
+    // Add this method to ShareService
+    public Optional<Share> getShareById(Long id) {
+        return shareRepository.findById(id);
+    }
+
 }
