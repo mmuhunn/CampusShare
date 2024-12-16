@@ -24,7 +24,7 @@ jobs:
         working-directory: CampusShare_demo
         run: |
           chmod +x gradlew
-          ./gradlew clean test --tests "Backend_simpleResults.CampusShare_demo.question.service.QuestionCreateTest"
+          ./gradlew clean test --tests "*QuestionCreateTest"
 
   # Unit Test for Get All Questions
   test-get-all-questions:
@@ -43,4 +43,4 @@ jobs:
         working-directory: CampusShare_demo
         run: |
           chmod +x gradlew
-          ./gradlew clean test --tests "Backend_simpleResults.CampusShare_demo.question.service.QuestionGetAllTest"
+          ./gradlew clean test --tests "*QuestionGetAllTest"
