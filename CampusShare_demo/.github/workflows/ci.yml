@@ -4,7 +4,7 @@ on:
   push:
     branches: [ Backend_SimpleResult ]
   pull_request:
-    branches: [ main ]
+    branches: [ Backend_SimpleResult ]
 
 jobs:
   build:
