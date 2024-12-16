@@ -3,51 +3,60 @@ package Backend_simpleResults.CampusShare_demo.share.controller;
 import Backend_simpleResults.CampusShare_demo.share.domain.Share;
 import Backend_simpleResults.CampusShare_demo.share.service.ShareService;
 import lombok.RequiredArgsConstructor;
-import org.springframework.http.ResponseEntity;
-import org.springframework.web.bind.annotation.*;
+import org.springframework.stereotype.Controller;
+import org.springframework.ui.Model;
+import org.springframework.web.bind.annotation.GetMapping;
+import org.springframework.web.bind.annotation.PathVariable;
+import org.springframework.web.bind.annotation.PostMapping;
+import org.springframework.web.bind.annotation.RequestParam;
 
 import java.util.List;
 
-@RestController
-@RequestMapping("/api/shares")
+@Controller
 @RequiredArgsConstructor
 public class ShareController {
-
     private final ShareService shareService;
 
-    // Upload content
-    @PostMapping("/upload")
-    public ResponseEntity<Share> uploadContent(@RequestParam String studentNumber,
-                                               @RequestParam String title,
-                                               @RequestParam String content,
-                                               @RequestParam String file) {
-        Share newShare = shareService.uploadContent(studentNumber, title, content, file);
-        return ResponseEntity.ok(newShare);
-    }
+    // Display the Share Board
+    @GetMapping("/share")
+    public String shareBoard(@RequestParam(required = false) String title, Model model) {
+        List<Share> shares;
 
-    // Download content
-    @PostMapping("/download/{uploadId}")
-    public ResponseEntity<String> downloadContent(@PathVariable String uploadId) {
-        boolean success = shareService.downloadContent(uploadId);
-        if (success) {
-            return ResponseEntity.ok("Download successful!");
+        // If a title is provided, perform a search
+        if (title != null && !title.isEmpty()) {
+            shares = shareService.searchContentByTitle(title);
         } else {
-            return ResponseEntity.status(404).body("Content not found.");
+            // Otherwise, fetch all shared content
+            shares = shareService.getAllSharedContent();
         }
+
+        // Add the list of shares to the model
+        model.addAttribute("shares", shares);
+        return "share"; // Corresponds to src/main/resources/templates/share.html
     }
 
-    // Retrieve all shared content
-    @GetMapping("/")
-    public ResponseEntity<List<Share>> getAllSharedContent() {
-        List<Share> shares = shareService.getAllSharedContent();
-        return ResponseEntity.ok(shares);
+    // Display the details of a specific post
+    @GetMapping("/share/{id}")
+    public String viewPost(@PathVariable Long id, Model model) {
+        Share share = shareService.getShareById(id)
+                .orElseThrow(() -> new IllegalArgumentException("Post not found."));
+        model.addAttribute("share", share);
+        return "share_detail"; // Corresponds to src/main/resources/templates/share_detail.html
     }
 
-    // Search content by title
-    @GetMapping("/search")
-    public ResponseEntity<List<Share>> searchContent(@RequestParam String title) {
-        List<Share> shares = shareService.searchContentByTitle(title);
-        return ResponseEntity.ok(shares);
+    // Navigate to the New Post Page
+    @GetMapping("/share/new")
+    public String newPostPage() {
+        return "new_post"; // Placeholder for the new post page template
     }
+    // Process new post submission
+    @PostMapping("/share/new")
+    public String createNewPost(@RequestParam String title,
+                                @RequestParam String content,
+                                @RequestParam(required = false) String file) {
+        shareService.uploadContent("anonymous", title, content, file); // Example: anonymous user
+        return "redirect:/share"; // Redirect to Share Board
+    }
+
 }
 
