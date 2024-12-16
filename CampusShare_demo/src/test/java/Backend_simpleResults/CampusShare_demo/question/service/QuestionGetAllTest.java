@@ -9,7 +9,7 @@ import java.util.List;
 
 import static org.assertj.core.api.Assertions.assertThat;
 
-public class QuestionServiceTest {
+public class QuestionGetAllTest {
 
     private QuestionService questionService;
     private MemoryQuestionRepository questionRepository;
@@ -18,13 +18,6 @@ public class QuestionServiceTest {
     public void setup() {
         questionRepository = new MemoryQuestionRepository();
         questionService = new QuestionService(questionRepository);
-    }
-
-    @Test
-    public void testCreateQuestion() {
-        Question question = questionService.createQuestion("12345", "Test question content");
-        assertThat(question).isNotNull();
-        assertThat(question.getContent()).isEqualTo("Test question content");
     }
 
     @Test
@@ -37,3 +30,4 @@ public class QuestionServiceTest {
         assertThat(questions).hasSize(2);
     }
 }
+
