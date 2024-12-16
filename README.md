@@ -2,8 +2,6 @@
 ![image](https://github.com/user-attachments/assets/69040374-efe7-438d-9137-2b2ef9d4705e)
 <br><br>
 
-## 🥅Purpose and Goals
-<br>
 
 > ## 🎓**Fostering a Community of Shared Knowledge and Academic Excellence**
 <br>
