@@ -1,0 +1,128 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Campus Share - Share Board</title>
+    <style>
+        body {
+            font-family: Arial, sans-serif;
+            margin: 0;
+            padding: 0;
+            background-color: #f8f9fa;
+        }
+        header {
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            padding: 10px 20px;
+            background-color: #007bff;
+            color: white;
+        }
+        .left-header {
+            display: flex;
+            align-items: center;
+        }
+        .left-header h1 {
+            font-size: 1.5rem;
+            margin-right: 20px;
+        }
+        .left-header a {
+            text-decoration: none;
+            color: white;
+            background-color: #6c757d; /* Dashboard 버튼 색상 */
+            padding: 5px 10px;
+            border-radius: 5px;
+            font-size: 0.9rem;
+        }
+        .search-container {
+            display: flex;
+            align-items: center;
+            gap: 10px;
+        }
+        .search-container input {
+            padding: 5px 10px;
+            font-size: 1rem;
+            border: 1px solid #ced4da;
+            border-radius: 5px;
+        }
+        .search-container button {
+            padding: 5px 15px;
+            font-size: 1rem;
+            background-color: white;
+            color: #007bff;
+            border: 1px solid white;
+            border-radius: 5px;
+            cursor: pointer;
+        }
+        .search-container button:hover {
+            background-color: #f0f4f8;
+        }
+        .content {
+            max-width: 800px;
+            margin: 20px auto;
+            padding: 20px;
+            background: white;
+            border-radius: 8px;
+            box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
+        }
+        .content ul {
+            list-style: none;
+            padding: 0;
+        }
+        .content li {
+            padding: 10px 0;
+            border-bottom: 1px solid #ddd;
+        }
+        .content li:last-child {
+            border-bottom: none;
+        }
+        .content li a {
+            text-decoration: none;
+            color: #007bff;
+            font-size: 1.1rem;
+        }
+        .content li a:hover {
+            text-decoration: underline;
+        }
+        .new-post {
+            display: inline-block;
+            padding: 10px 15px;
+            background-color: #28a745;
+            color: white;
+            text-decoration: none;
+            border-radius: 5px;
+            font-size: 1rem;
+        }
+        .new-post:hover {
+            background-color: #218838;
+        }
+    </style>
+</head>
+<body>
+<header>
+    <!-- Left header with Dashboard -->
+    <div class="left-header">
+        <h1>Share Board</h1>
+        <a href="/user/dashboard">Dashboard</a>
+    </div>
+    <!-- Search -->
+    <div class="search-container">
+        <form id="search-form" method="GET" action="/share">
+            <input type="text" name="title" placeholder="Search by title" required>
+            <button type="submit">Search</button>
+        </form>
+    </div>
+    <!-- New Post Button -->
+    <a href="/share/new" class="new-post">New Post</a>
+</header>
+<div class="content">
+    <ul>
+        <!-- Render posts dynamically -->
+        <li th:each="share : ${shares}">
+            <a th:href="@{/share/{id}(id=${share.id})}" th:text="${share.title}"></a>
+        </li>
+    </ul>
+</div>
+</body>
+</html>
