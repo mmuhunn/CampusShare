@@ -2,8 +2,6 @@ import React, { useState } from "react";
 import { AiOutlinePaperClip } from "react-icons/ai"; // 아이콘 라이브러리
 
 const NewPost = ({ coursesData }) => {
-  const [selectedGrade, setSelectedGrade] = useState("");
-  const [selectedSemester, setSelectedSemester] = useState("");
   const [selectedCourse, setSelectedCourse] = useState("");
   const [title, setTitle] = useState("");
   const [content, setContent] = useState("");
@@ -79,14 +77,13 @@ const NewPost = ({ coursesData }) => {
         style={styles.input}
         value={selectedCourse}
         onChange={(e) => setSelectedCourse(e.target.value)}
-        disabled={!Object.keys(coursesData).length}
       >
         <option value="" disabled>
           {Object.keys(coursesData).length ? "Select a Course" : "No courses available"}
         </option>
-        {Object.keys(coursesData).map((course) => (
-          <option key={course} value={course}>
-            {course}
+        {coursesData.map((course, index) => (
+    <option key={index} value={course}>
+      {course}
           </option>
         ))}
       </select>

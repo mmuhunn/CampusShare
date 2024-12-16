@@ -18,7 +18,9 @@ const App = () => {
     <Router>
       {/* Header에 setCoursesData 전달 */}
       <Header setCoursesData={setCoursesData} />
+      
       <Routes>
+        
         <Route path="/" element={<Home />} />
         <Route path="/login" element={<Login />} />
         <Route path="/subjectlist" element={<SubjectList />} />

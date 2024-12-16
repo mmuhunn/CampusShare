@@ -82,6 +82,7 @@ const Header = ({ setCoursesData }) => {
         </Link>
       </nav>
     </header>
+    
   );
 };
 
