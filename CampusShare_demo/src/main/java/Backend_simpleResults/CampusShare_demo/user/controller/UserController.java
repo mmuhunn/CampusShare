@@ -35,9 +35,25 @@ public class UserController {
         }
     }
 
-    // Other existing endpoints (e.g., login) can remain unchanged
     @GetMapping("/login")
     public String loginPage() {
-        return "login"; // Corresponds to login.html (to be created later)
+        return "login"; // Corresponds to login.html
+    }
+
+    @PostMapping("/login")
+    @ResponseBody
+    public ResponseEntity<String> loginUser(@RequestParam String studentNumber,
+                                            @RequestParam String password) {
+        try {
+            userService.loginUser(studentNumber, password);
+            return ResponseEntity.ok("Login successful");
+        } catch (IllegalArgumentException e) {
+            return ResponseEntity.badRequest().body(e.getMessage());
+        }
+    }
+
+    @GetMapping("/dashboard")
+    public String dashboardPage() {
+        return "dashboard"; // Corresponds to dashboard.html
     }
 }

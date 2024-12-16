@@ -1,0 +1,132 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>QnA Board</title>
+    <style>
+        body {
+            font-family: Arial, sans-serif;
+            background-color: #f8f9fa;
+            margin: 0;
+            padding: 0;
+        }
+
+        header {
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            padding: 10px 20px;
+            background-color: #007bff;
+            color: white;
+        }
+
+        .left-header {
+            display: flex;
+            align-items: center;
+        }
+
+        .left-header h1 {
+            margin: 0;
+            margin-right: 20px;
+        }
+
+        .left-header a {
+            text-decoration: none;
+            color: white;
+            background-color: #6c757d; /* Grey color for dashboard */
+            padding: 5px 10px;
+            border-radius: 5px;
+            font-size: 0.9rem;
+        }
+
+        header .new-question {
+            text-decoration: none;
+            color: white;
+            background-color: #28a745;
+            padding: 5px 10px;
+            border-radius: 5px;
+        }
+
+        .search-container {
+            margin: 20px auto;
+            display: flex;
+            justify-content: center;
+            width: 80%;
+        }
+
+        .search-container input {
+            flex: 1;
+            padding: 10px;
+            border: 1px solid #ddd;
+            border-radius: 5px 0 0 5px;
+        }
+
+        .search-container button {
+            padding: 10px;
+            background-color: #007bff;
+            color: white;
+            border: none;
+            border-radius: 0 5px 5px 0;
+            cursor: pointer;
+        }
+
+        .content {
+            width: 80%;
+            margin: 20px auto;
+            background: white;
+            padding: 20px;
+            border-radius: 10px;
+            box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
+        }
+
+        ul {
+            list-style: none;
+            padding: 0;
+        }
+
+        li {
+            padding: 10px;
+            border-bottom: 1px solid #ddd;
+        }
+
+        li a {
+            text-decoration: none;
+            color: #007bff;
+            font-size: 1.1rem;
+        }
+
+        li a:hover {
+            text-decoration: underline;
+        }
+    </style>
+</head>
+<body>
+<!-- Header -->
+<header>
+    <div class="left-header">
+        <h1>QnA Board</h1>
+        <a href="/user/dashboard">Dashboard</a> <!-- Dashboard 버튼 추가 -->
+    </div>
+    <a href="/qna/new" class="new-question">New Question</a>
+</header>
+
+<!-- Search -->
+<div class="search-container">
+    <form method="get" action="/qna/search">
+        <input type="text" name="title" placeholder="Search by title">
+        <button type="submit">Search</button>
+    </form>
+</div>
+
+<!-- Question List -->
+<div class="content">
+    <ul>
+        <li th:each="question : ${questions}">
+            <a th:href="@{/qna/{id}(id=${question.questionId})}" th:text="${question.content}">Question</a>
+        </li>
+    </ul>
+</div>
+</body>
+</html>
+
