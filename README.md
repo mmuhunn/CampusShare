@@ -1,8 +1,5 @@
 # CampusShare
 ![image](https://github.com/user-attachments/assets/69040374-efe7-438d-9137-2b2ef9d4705e)
-<br><br>
-
-## 🥅Purpose and Goals
 <br>
 
 > ## 🎓**Fostering a Community of Shared Knowledge and Academic Excellence**
@@ -74,8 +71,6 @@ We welcome contributions! Please read our [Contributing Guidelines](CONTRIBUTING
 ## 📜 License
 This project is licensed under the MIT License - see the [LICENSE](LICENSE) file for details.
 
-
-[Contributing Guidelines](Contributing%20Guidelines.md)
 
 
 <div style="text-align: left;">
