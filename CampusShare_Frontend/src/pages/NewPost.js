@@ -1,4 +1,5 @@
 import React, { useState } from "react";
+import { AiOutlinePaperClip } from "react-icons/ai"; // 아이콘 라이브러리
 
 const NewPost = ({ coursesData }) => {
   const [selectedGrade, setSelectedGrade] = useState("");
@@ -6,6 +7,7 @@ const NewPost = ({ coursesData }) => {
   const [selectedCourse, setSelectedCourse] = useState("");
   const [title, setTitle] = useState("");
   const [content, setContent] = useState("");
+  const [file, setFile] = useState(null); // 파일 상태 추가
 
   const styles = {
     form: {
@@ -33,16 +35,38 @@ const NewPost = ({ coursesData }) => {
       fontSize: "1rem",
       marginTop: "10px",
     },
+    fileButton: {
+      padding: "10px",
+      backgroundColor: "#f0f0f0",
+      border: "1px solid #ddd",
+      borderRadius: "50%",
+      cursor: "pointer",
+      display: "flex",
+      alignItems: "center",
+      justifyContent: "center",
+      fontSize: "1.5rem",
+      marginLeft: "10px",
+      transition: "background-color 0.3s ease",
+    },
+    fileInput: {
+      display: "none", // 숨김 처리
+    },
+    fileContainer: {
+      display: "flex",
+      justifyContent: "space-between",
+      alignItems: "center",
+    },
   };
 
-  // 학년 및 학기에 따른 필터링된 과목
-  const filteredCourses = Object.values(coursesData).flat();
-  
+  const handleFileChange = (e) => {
+    setFile(e.target.files[0]);
+    alert(`Selected file: ${e.target.files[0]?.name}`);
+  };
 
   const handleSubmit = (e) => {
     e.preventDefault();
     if (selectedCourse && title && content) {
-      alert(`Course: ${selectedCourse}, Title: ${title}, Content: ${content}`);
+      alert(`Course: ${selectedCourse}, Title: ${title}, Content: ${content}, File: ${file?.name || "No file attached"}`);
     } else {
       alert("Please fill in all fields.");
     }
@@ -55,12 +79,12 @@ const NewPost = ({ coursesData }) => {
         style={styles.input}
         value={selectedCourse}
         onChange={(e) => setSelectedCourse(e.target.value)}
-        disabled={!filteredCourses.length}
+        disabled={!Object.keys(coursesData).length}
       >
         <option value="" disabled>
-          {filteredCourses.length ? "Select a Course" : "No courses available"}
+          {Object.keys(coursesData).length ? "Select a Course" : "No courses available"}
         </option>
-        {filteredCourses.map((course) => (
+        {Object.keys(coursesData).map((course) => (
           <option key={course} value={course}>
             {course}
           </option>
@@ -84,15 +108,24 @@ const NewPost = ({ coursesData }) => {
         onChange={(e) => setContent(e.target.value)}
       />
 
-      {/* 제출 버튼 */}
-      <button style={styles.button} type="submit">
-        Submit
-      </button>
+      <div style={styles.fileContainer}>
+        {/* 제출 버튼 */}
+        <button style={styles.button} type="submit">
+          Submit
+        </button>
+
+        {/* 파일 첨부 */}
+        <label style={styles.fileButton}>
+          <AiOutlinePaperClip />
+          <input
+            type="file"
+            style={styles.fileInput}
+            onChange={handleFileChange}
+          />
+        </label>
+      </div>
     </form>
   );
-
-
-  
 };
 
 export default NewPost;

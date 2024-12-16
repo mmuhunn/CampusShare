@@ -1,0 +1,200 @@
+name: CI Pipeline - Unit Tests
+
+on:
+  push:
+    branches: [ Backend_SimpleResult ]
+  pull_request:
+    branches: [ main ]
+
+jobs:
+  # Unit Test for CreateAnswerTest
+  test-create-answer:
+    runs-on: ubuntu-latest
+    steps:
+      - name: Checkout repository
+        uses: actions/checkout@v3
+      - name: Set up JDK 17
+        uses: actions/setup-java@v3
+        with:
+          java-version: '17'
+          distribution: 'temurin'
+      - name: Run test for CreateAnswerTest
+        working-directory: CampusShare_demo
+        run: |
+          chmod +x gradlew
+          ./gradlew clean test --tests "*CreateAnswerTest"
+
+  # Unit Test for GetAnswersByQuestionIdTest
+  test-get-answers-by-question-id:
+    runs-on: ubuntu-latest
+    steps:
+      - name: Checkout repository
+        uses: actions/checkout@v3
+      - name: Set up JDK 17
+        uses: actions/setup-java@v3
+        with:
+          java-version: '17'
+          distribution: 'temurin'
+      - name: Run test for GetAnswersByQuestionIdTest
+        working-directory: CampusShare_demo
+        run: |
+          chmod +x gradlew
+          ./gradlew clean test --tests "*GetAnswersByQuestionIdTest"
+   
+
+  # Unit Test for Create Question
+  test-create-question:
+    runs-on: ubuntu-latest
+    steps:
+      - name: Checkout repository
+        uses: actions/checkout@v3
+
+      - name: Set up JDK 17
+        uses: actions/setup-java@v3
+        with:
+          java-version: '17'
+          distribution: 'temurin'
+
+      - name: Run test for createQuestion method
+        working-directory: CampusShare_demo
+        run: |
+          chmod +x gradlew
+          ./gradlew clean test --tests "*QuestionCreateTest"
+
+  # Unit Test for Get All Questions
+  test-get-all-questions:
+    runs-on: ubuntu-latest
+    steps:
+      - name: Checkout repository
+        uses: actions/checkout@v3
+
+      - name: Set up JDK 17
+        uses: actions/setup-java@v3
+        with:
+          java-version: '17'
+          distribution: 'temurin'
+
+      - name: Run test for getAllQuestions method
+        working-directory: CampusShare_demo
+        run: |
+          chmod +x gradlew
+          ./gradlew clean test --tests "*QuestionGetAllTest"
+
+  # Unit Test for SearchQuestionsByTitleTest
+  test-search-questions-by-title:
+    runs-on: ubuntu-latest
+    steps:
+      - name: Checkout repository
+        uses: actions/checkout@v3
+      - name: Set up JDK 17
+        uses: actions/setup-java@v3
+        with:
+          java-version: '17'
+          distribution: 'temurin'
+      - name: Run test for SearchQuestionsByTitleTest
+        working-directory: CampusShare_demo
+        run: |
+          chmod +x gradlew
+          ./gradlew clean test --tests "*SearchQuestionsByTitleTest"
+
+  # Unit Test for DownloadContentTest
+  test-download-content:
+    runs-on: ubuntu-latest
+    steps:
+      - name: Checkout repository
+        uses: actions/checkout@v3
+      - name: Set up JDK 17
+        uses: actions/setup-java@v3
+        with:
+          java-version: '17'
+          distribution: 'temurin'
+      - name: Run DownloadContentTest
+        working-directory: CampusShare_demo
+        run: |
+          chmod +x gradlew
+          ./gradlew clean test --tests "*DownloadContentTest"
+          
+  # Unit Test for DownloadContentNotFoundTest
+  test-download-content-not-found:
+    runs-on: ubuntu-latest
+    steps:
+      - name: Checkout repository
+        uses: actions/checkout@v3
+      - name: Set up JDK 17
+        uses: actions/setup-java@v3
+        with:
+          java-version: '17'
+          distribution: 'temurin'
+      - name: Run DownloadContentNotFoundTest
+        working-directory: CampusShare_demo
+        run: |
+          chmod +x gradlew
+          ./gradlew clean test --tests "*DownloadContentNotFoundTest"
+
+  # Unit Test for GetAllSharedContentTest
+  test-get-all-shared-content:
+    runs-on: ubuntu-latest
+    steps:
+      - name: Checkout repository
+        uses: actions/checkout@v3
+      - name: Set up JDK 17
+        uses: actions/setup-java@v3
+        with:
+          java-version: '17'
+          distribution: 'temurin'
+      - name: Run GetAllSharedContentTest
+        working-directory: CampusShare_demo
+        run: |
+          chmod +x gradlew
+          ./gradlew clean test --tests "*GetAllSharedContentTest"
+
+  # Unit Test for GetShareByIdTest
+  test-get-share-by-id:
+    runs-on: ubuntu-latest
+    steps:
+      - name: Checkout repository
+        uses: actions/checkout@v3
+      - name: Set up JDK 17
+        uses: actions/setup-java@v3
+        with:
+          java-version: '17'
+          distribution: 'temurin'
+      - name: Run GetShareByIdTest
+        working-directory: CampusShare_demo
+        run: |
+          chmod +x gradlew
+          ./gradlew clean test --tests "*GetShareByIdTest"
+
+  # Unit Test for SearchContentByTitleTest
+  test-search-content-by-title:
+    runs-on: ubuntu-latest
+    steps:
+      - name: Checkout repository
+        uses: actions/checkout@v3
+      - name: Set up JDK 17
+        uses: actions/setup-java@v3
+        with:
+          java-version: '17'
+          distribution: 'temurin'
+      - name: Run SearchContentByTitleTest
+        working-directory: CampusShare_demo
+        run: |
+          chmod +x gradlew
+          ./gradlew clean test --tests "*SearchContentByTitleTest"
+
+  # Unit Test for UploadContentTest
+  test-upload-content:
+    runs-on: ubuntu-latest
+    steps:
+      - name: Checkout repository
+        uses: actions/checkout@v3
+      - name: Set up JDK 17
+        uses: actions/setup-java@v3
+        with:
+          java-version: '17'
+          distribution: 'temurin'
+      - name: Run UploadContentTest
+        working-directory: CampusShare_demo
+        run: |
+          chmod +x gradlew
+          ./gradlew clean test --tests "*UploadContentTest"

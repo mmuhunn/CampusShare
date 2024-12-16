@@ -2,10 +2,8 @@ package Backend_simpleResults.CampusShare_demo.question.repository;
 
 import Backend_simpleResults.CampusShare_demo.question.domain.Question;
 
-import java.util.ArrayList;
-import java.util.HashMap;
-import java.util.List;
-import java.util.Optional;
+import java.util.*;
+import java.util.stream.Collectors;
 
 public class MemoryQuestionRepository implements QuestionRepository {
     private final HashMap<Long, Question> store = new HashMap<>(); // Memory-based storage
@@ -34,4 +32,12 @@ public class MemoryQuestionRepository implements QuestionRepository {
     public void deleteById(Long id) {
         store.remove(id);
     }
+
+    // 제목에 특정 문자열이 포함된 질문 검색
+    public List<Question> findByContentContaining(String title) {
+        return store.values().stream()
+                .filter(question -> question.getContent().toLowerCase().contains(title.toLowerCase()))
+                .collect(Collectors.toList());
+    }
 }
+

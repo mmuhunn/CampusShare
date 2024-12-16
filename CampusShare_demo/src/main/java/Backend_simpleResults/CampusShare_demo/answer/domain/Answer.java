@@ -8,16 +8,15 @@ import lombok.Setter;
 @Setter
 @NoArgsConstructor
 public class Answer {
-    private Long answerId; // Unique ID for the answer
-    private String studentID; // ID of the student related to the answer
-    private String authorId; // ID of the author (e.g., student number)
-    private String content; // Content of the answer
+    private Long answerId;      // Unique ID for the answer
+    private Long questionId;    // ID of the related question
+    private String studentID;   // ID of the student
+    private String content;     // Content of the answer
 
-    // Constructor for initializing fields
-    public Answer(String studentID, String authorId, String content) {
+    // Constructor to initialize fields
+    public Answer(Long questionId, String studentID, String content) {
+        this.questionId = questionId;
         this.studentID = studentID;
-        this.authorId = authorId;
         this.content = content;
     }
 }
-
