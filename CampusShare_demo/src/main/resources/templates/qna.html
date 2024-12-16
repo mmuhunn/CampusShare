@@ -7,9 +7,9 @@
     <style>
         body {
             font-family: Arial, sans-serif;
+            background-color: #f8f9fa;
             margin: 0;
             padding: 0;
-            background-color: #f8f9fa;
         }
 
         header {
@@ -22,15 +22,56 @@
         }
 
         header h1 {
+            margin: 0;
             font-size: 1.5rem;
         }
 
-        .content {
-            max-width: 800px;
+        header a {
+            text-decoration: none;
+            color: white;
+            background-color: #28a745;
+            padding: 5px 10px;
+            border-radius: 5px;
+        }
+
+        header a:hover {
+            background-color: #218838;
+        }
+
+        .search-container {
             margin: 20px auto;
-            padding: 20px;
+            display: flex;
+            justify-content: center;
+            width: 80%;
+        }
+
+        .search-container input {
+            flex: 1;
+            padding: 10px;
+            border: 1px solid #ddd;
+            border-radius: 5px 0 0 5px;
+            outline: none;
+        }
+
+        .search-container button {
+            background-color: #007bff;
+            color: white;
+            border: none;
+            padding: 10px 20px;
+            border-radius: 0 5px 5px 0;
+            cursor: pointer;
+        }
+
+        .search-container button:hover {
+            background-color: #0056b3;
+        }
+
+        .content {
+            width: 80%;
+            margin: 20px auto;
             background: white;
-            border-radius: 8px;
+            padding: 20px;
+            border-radius: 10px;
             box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
         }
 
@@ -44,10 +85,6 @@
             border-bottom: 1px solid #ddd;
         }
 
-        li:last-child {
-            border-bottom: none;
-        }
-
         li a {
             text-decoration: none;
             color: #007bff;
@@ -57,33 +94,29 @@
         li a:hover {
             text-decoration: underline;
         }
-
-        .new-question {
-            display: inline-block;
-            padding: 10px 15px;
-            background-color: #28a745;
-            color: white;
-            text-decoration: none;
-            border-radius: 5px;
-            font-size: 1rem;
-        }
-
-        .new-question:hover {
-            background-color: #218838;
-        }
     </style>
 </head>
 <body>
+<!-- Header -->
 <header>
     <h1>QnA Board</h1>
-    <a href="/qna/new" class="new-question">New Question</a>
+    <a href="/qna/new">New Question</a>
 </header>
 
+<!-- Search Container -->
+<div class="search-container">
+    <form method="get" action="/qna/search" style="display: flex; width: 100%;">
+        <input type="text" name="title" placeholder="Search questions by title...">
+        <button type="submit">Search</button>
+    </form>
+</div>
+
+<!-- Question List -->
 <div class="content">
     <ul>
         <!-- 질문 목록 렌더링 -->
         <li th:each="question : ${questions}">
-            <a th:href="@{/qna/{id}(id=${question.questionId})}" th:text="${question.content}"></a>
+            <a th:href="@{/qna/{id}(id=${question.questionId})}" th:text="${question.content}">Question Title</a>
         </li>
     </ul>
 </div>
