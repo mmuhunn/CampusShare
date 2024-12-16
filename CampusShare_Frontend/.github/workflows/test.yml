@@ -1,43 +1,48 @@
-name: Frontend Unit Test Workflow
+
+name: Node.js CI Pipeline
 
 on:
   push:
     branches:
-      - main
+      - testBranch
   pull_request:
     branches:
-      - main
+      - testBranch
+
 
 jobs:
-  test:
-    name: Run Jest Tests
+  build:
     runs-on: ubuntu-latest
 
+
     steps:
-      # 1. Checkout the code from the repository
-      - name: Checkout Repository
-        uses: actions/checkout@v3
+    # Checkout the repository
+    - name: Checkout code
+      uses: actions/checkout@v3
 
-      # 2. Set up Node.js environment
-      - name: Set up Node.js
-        uses: actions/setup-node@v3
-        with:
-          node-version: '18' # LTS 버전을 사용합니다. 필요에 따라 수정 가능
+    # Set up Node.js environment
+    - name: Setup Node.js
+      uses: actions/setup-node@v3
+      with:
+        node-version: 16  # 원하는 Node.js 버전을 지정
 
-      # 3. Install dependencies
-      - name: Install Dependencies
-        run: npm install
+    # Install dependencies
+    - name: Install dependencies
+      run: npm install
 
-      # 4. Run Jest tests
-      - name: Run Tests with Jest
-        run: npm test
+    # Run tests
+    - name: Run tests
+      run: npm test
 
-      # 5. Report coverage (optional)
-      - name: Upload Test Coverage Report
-        uses: codecov/codecov-action@v3
-        with:
-          token: ${{ secrets.CODECOV_TOKEN }}
-          files: ./coverage/*.json
-          flags: unittests
-          name: frontend-tests
-          fail_ci_if_error: true
+    # Build the project (optional, if your project requires a build step)
+    - name: Build project
+      run: npm run build
+
+    # Optionally upload test results or artifacts
+    - name: Archive test results
+      if: always()
+      uses: actions/upload-artifact@v3
+      with:
+        name: test-results
+        path: ./test-results  # 테스트 결과 파일 경로 지정
+
