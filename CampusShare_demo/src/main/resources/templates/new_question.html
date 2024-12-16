@@ -3,7 +3,7 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>New Question</title>
+    <title>Create New Question</title>
     <style>
         body {
             font-family: Arial, sans-serif;
@@ -23,71 +23,42 @@
 
         h1 {
             text-align: center;
-            color: #333;
         }
 
-        form {
-            display: flex;
-            flex-direction: column;
-        }
-
-        label {
-            margin-bottom: 5px;
-            font-weight: bold;
-            color: #555;
-        }
-
-        input, textarea {
+        textarea {
+            width: 100%;
+            height: 150px;
             margin-bottom: 15px;
             padding: 10px;
             border: 1px solid #ddd;
             border-radius: 5px;
         }
 
-        textarea {
-            resize: none;
-            height: 150px;
-        }
-
         button {
-            padding: 10px;
             background-color: #007bff;
             color: white;
             border: none;
+            padding: 10px;
             border-radius: 5px;
             cursor: pointer;
-            font-size: 1rem;
         }
 
-        button:hover {
-            background-color: #0056b3;
-        }
-
-        .back-link {
+        a {
             display: block;
             text-align: center;
             margin-top: 10px;
             color: #007bff;
-            text-decoration: none;
-        }
-
-        .back-link:hover {
-            text-decoration: underline;
         }
     </style>
 </head>
 <body>
 <div class="container">
-    <h1>Ask a New Question</h1>
+    <h1>Create New Question</h1>
     <form method="post" action="/qna/new">
-        <label for="content">Question:</label>
-        <textarea id="content" name="content" placeholder="Write your question here..." required></textarea>
-
+        <textarea name="content" placeholder="Write your question here..." required></textarea>
         <button type="submit">Submit</button>
     </form>
-
-    <!-- Back to QnA Board -->
-    <a href="/qna" class="back-link">Back to QnA Board</a>
+    <a href="/qna">Back to QnA Board</a>
 </div>
 </body>
 </html>

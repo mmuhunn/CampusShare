@@ -56,4 +56,10 @@ public class QuestionController {
         model.addAttribute("questions", questions);
         return "qna"; // 검색 결과를 qna.html에 표시
     }
+
+    @PostMapping("/{id}/answer")
+    public String postAnswer(@PathVariable Long id, @RequestParam String content) {
+        answerService.createAnswer(id, "anonymous", content); // 답변 저장
+        return "redirect:/qna/" + id; // 현재 질문 페이지로 리다이렉트
+    }
 }

@@ -19,8 +19,21 @@
             background-color: #007bff;
             color: white;
         }
-        header h1 {
+        .left-header {
+            display: flex;
+            align-items: center;
+        }
+        .left-header h1 {
             font-size: 1.5rem;
+            margin-right: 20px;
+        }
+        .left-header a {
+            text-decoration: none;
+            color: white;
+            background-color: #6c757d; /* Dashboard 버튼 색상 */
+            padding: 5px 10px;
+            border-radius: 5px;
+            font-size: 0.9rem;
         }
         .search-container {
             display: flex;
@@ -88,13 +101,19 @@
 </head>
 <body>
 <header>
-    <h1>Share Board</h1>
+    <!-- Left header with Dashboard -->
+    <div class="left-header">
+        <h1>Share Board</h1>
+        <a href="/user/dashboard">Dashboard</a>
+    </div>
+    <!-- Search -->
     <div class="search-container">
         <form id="search-form" method="GET" action="/share">
             <input type="text" name="title" placeholder="Search by title" required>
             <button type="submit">Search</button>
         </form>
     </div>
+    <!-- New Post Button -->
     <a href="/share/new" class="new-post">New Post</a>
 </header>
 <div class="content">
