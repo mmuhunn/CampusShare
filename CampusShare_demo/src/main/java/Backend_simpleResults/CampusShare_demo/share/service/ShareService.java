@@ -49,4 +49,10 @@ public class ShareService {
     public List<Share> searchContentByTitle(String title) {
         return shareRepository.findByTitleContaining(title);
     }
+
+    // Add this method to ShareService
+    public Optional<Share> getShareById(Long id) {
+        return shareRepository.findById(id);
+    }
+
 }

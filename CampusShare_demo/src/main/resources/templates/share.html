@@ -1,0 +1,8 @@
+<div class="content">
+    <ul>
+        <!-- Render posts dynamically -->
+        <li th:each="share : ${shares}">
+            <a th:href="@{/share/{id}(id=${share.id})}" th:text="${share.title}"></a>
+        </li>
+    </ul>
+</div>
