@@ -7,6 +7,7 @@ import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.PathVariable;
+import org.springframework.web.bind.annotation.PostMapping;
 import org.springframework.web.bind.annotation.RequestParam;
 
 import java.util.List;
@@ -48,5 +49,14 @@ public class ShareController {
     public String newPostPage() {
         return "new_post"; // Placeholder for the new post page template
     }
+    // Process new post submission
+    @PostMapping("/share/new")
+    public String createNewPost(@RequestParam String title,
+                                @RequestParam String content,
+                                @RequestParam(required = false) String file) {
+        shareService.uploadContent("anonymous", title, content, file); // Example: anonymous user
+        return "redirect:/share"; // Redirect to Share Board
+    }
+
 }
 

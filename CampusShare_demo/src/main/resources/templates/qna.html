@@ -3,7 +3,7 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Campus Share - Share Board</title>
+    <title>QnA Board</title>
     <style>
         body {
             font-family: Arial, sans-serif;
@@ -11,6 +11,7 @@
             padding: 0;
             background-color: #f8f9fa;
         }
+
         header {
             display: flex;
             justify-content: space-between;
@@ -19,32 +20,11 @@
             background-color: #007bff;
             color: white;
         }
+
         header h1 {
             font-size: 1.5rem;
         }
-        .search-container {
-            display: flex;
-            align-items: center;
-            gap: 10px;
-        }
-        .search-container input {
-            padding: 5px 10px;
-            font-size: 1rem;
-            border: 1px solid #ced4da;
-            border-radius: 5px;
-        }
-        .search-container button {
-            padding: 5px 15px;
-            font-size: 1rem;
-            background-color: white;
-            color: #007bff;
-            border: 1px solid white;
-            border-radius: 5px;
-            cursor: pointer;
-        }
-        .search-container button:hover {
-            background-color: #f0f4f8;
-        }
+
         .content {
             max-width: 800px;
             margin: 20px auto;
@@ -53,26 +33,32 @@
             border-radius: 8px;
             box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
         }
-        .content ul {
+
+        ul {
             list-style: none;
             padding: 0;
         }
-        .content li {
+
+        li {
             padding: 10px 0;
             border-bottom: 1px solid #ddd;
         }
-        .content li:last-child {
+
+        li:last-child {
             border-bottom: none;
         }
-        .content li a {
+
+        li a {
             text-decoration: none;
             color: #007bff;
             font-size: 1.1rem;
         }
-        .content li a:hover {
+
+        li a:hover {
             text-decoration: underline;
         }
-        .new-post {
+
+        .new-question {
             display: inline-block;
             padding: 10px 15px;
             background-color: #28a745;
@@ -81,27 +67,23 @@
             border-radius: 5px;
             font-size: 1rem;
         }
-        .new-post:hover {
+
+        .new-question:hover {
             background-color: #218838;
         }
     </style>
 </head>
 <body>
 <header>
-    <h1>Share Board</h1>
-    <div class="search-container">
-        <form id="search-form" method="GET" action="/share">
-            <input type="text" name="title" placeholder="Search by title" required>
-            <button type="submit">Search</button>
-        </form>
-    </div>
-    <a href="/share/new" class="new-post">New Post</a>
+    <h1>QnA Board</h1>
+    <a href="/qna/new" class="new-question">New Question</a>
 </header>
+
 <div class="content">
     <ul>
-        <!-- Render posts dynamically -->
-        <li th:each="share : ${shares}">
-            <a th:href="@{/share/{id}(id=${share.id})}" th:text="${share.title}"></a>
+        <!-- 질문 목록 렌더링 -->
+        <li th:each="question : ${questions}">
+            <a th:href="@{/qna/{id}(id=${question.questionId})}" th:text="${question.content}"></a>
         </li>
     </ul>
 </div>

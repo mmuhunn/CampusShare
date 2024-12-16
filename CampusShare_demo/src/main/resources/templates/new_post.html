@@ -1,0 +1,130 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Campus Share - New Post</title>
+    <style>
+        body {
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+            justify-content: center;
+            height: 100vh;
+            margin: 0;
+            font-family: Arial, sans-serif;
+            background-color: #f8f9fa;
+        }
+
+        .container {
+            background: white;
+            padding: 20px;
+            border-radius: 8px;
+            box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
+            max-width: 500px;
+            width: 100%;
+            text-align: center;
+        }
+
+        h1 {
+            font-size: 2rem;
+            margin-bottom: 20px;
+            color: #333;
+        }
+
+        form {
+            display: flex;
+            flex-direction: column;
+        }
+
+        input, textarea {
+            margin-bottom: 15px;
+            padding: 10px;
+            font-size: 1rem;
+            border: 1px solid #ced4da;
+            border-radius: 5px;
+            outline: none;
+            width: 100%;
+        }
+
+        textarea {
+            resize: none;
+            height: 150px;
+        }
+
+        input::placeholder, textarea::placeholder {
+            color: #6c757d;
+        }
+
+        input:focus, textarea:focus {
+            border-color: #007bff;
+        }
+
+        button {
+            padding: 10px;
+            font-size: 1rem;
+            color: white;
+            background-color: #007bff;
+            border: none;
+            border-radius: 5px;
+            cursor: pointer;
+            transition: background-color 0.3s;
+        }
+
+        button:hover {
+            background-color: #0056b3;
+        }
+
+        a {
+            display: inline-block;
+            margin-top: 20px;
+            color: #007bff;
+            text-decoration: none;
+        }
+
+        a:hover {
+            text-decoration: underline;
+        }
+    </style>
+</head>
+<body>
+<div class="container">
+    <h1>Create New Post</h1>
+    <form id="new-post-form" method="POST" action="/share/new">
+        <input type="text" name="title" placeholder="Enter title">
+        <textarea name="content" placeholder="Enter content"></textarea>
+        <input type="text" name="file" placeholder="Enter file path or description (optional)">
+        <button type="submit">Upload</button>
+    </form>
+    <a href="/share">Back to Share Board</a>
+</div>
+
+<script>
+    document.getElementById('new-post-form').onsubmit = async function(event) {
+        event.preventDefault(); // Prevent traditional form submission
+        const form = event.target;
+        const formData = new FormData(form);
+        const data = Object.fromEntries(formData.entries());
+
+        try {
+            const response = await fetch(form.action, {
+                method: form.method,
+                headers: {
+                    'Content-Type': 'application/x-www-form-urlencoded',
+                },
+                body: new URLSearchParams(data),
+            });
+
+            if (response.ok) {
+                // Redirect to Share Board on success
+                window.location.href = "/share";
+            } else {
+                alert("Failed to upload post. Please try again.");
+            }
+        } catch (error) {
+            alert("An error occurred. Please try again.");
+        }
+    };
+</script>
+</body>
+</html>
