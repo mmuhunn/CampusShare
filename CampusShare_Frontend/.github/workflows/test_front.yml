@@ -1,0 +1,37 @@
+name: Test Frontend
+
+on:
+  push:
+    branches:
+      - testBranch
+      - main
+  pull_request:
+    branches:
+      - main
+
+jobs:
+  build:
+    runs-on: ubuntu-latest
+    
+    steps:
+      # 체크아웃 소스 코드
+      - name: Checkout code
+        uses: actions/checkout@v2
+        
+      # Node.js 설치
+      - name: Set up Node.js
+        uses: actions/setup-node@v2
+        with:
+          node-version: '16' # 원하는 Node.js 버전으로 설정
+
+      # 의존성 설치
+      - name: Install dependencies
+        run: |
+          cd src
+          npm install
+
+      # 테스트 실행
+      - name: Run tests
+        run: |
+          cd src/_tests_
+          npm test Board.test.js
