@@ -33,7 +33,7 @@ jobs:
 
 
       - name: Build and test with Gradle
-        working-directory: CampusShare_demo # CampusShare_demo 기준으로 실행
+        working-directory: CampusShare_demo
         run: |
           chmod +x gradlew
-          ./gradlew clean build
+          ./gradlew clean build test
