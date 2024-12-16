@@ -175,7 +175,10 @@ function Home() {
   <h2>Popular Posts</h2>
   {popularPosts.length > 0 ? (
     popularPosts.map((post) => (
-      <div key={post.id} style={styles.postCard}>
+      <div
+        key={post.id}
+        style={styles.postCard} // 버튼 스타일 유지
+      >
         <h3>{post.title}</h3>
         <p>{post.excerpt}</p>
       </div>
@@ -183,11 +186,10 @@ function Home() {
   ) : (
     <p>Loading popular posts...</p>
   )}
-    
-        <Link to="/popular-posts" style={styles.viewAllLink}>
-          View All Popular Posts
-        </Link>
-      </div>
+  <div style={styles.viewAllLink}>
+    View All Popular Posts
+  </div>
+</div>
 
       {/* Ranking Section (Podium) */}
       <div style={styles.rankingContainer}>
