@@ -69,7 +69,12 @@ To get the Spring project up and running locally:
 4. Open your results "http://localhost:8080".
 
 ## 🤝 Contributing
-We welcome contributions! Please read our [Contributing Guidelines](CONTRIBUTING.md) for more information.
+We welcome contributions! Please read below list for more information.
+
+### For New Contributors
+- [Contributing Guidelines](https://github.com/mmuhunn/CampusShare/blob/main/Contributing%20Guidelines.md)
+- [Welcome New Contributors](https://github.com/mmuhunn/CampusShare/discussions/69)
+- [How to cooperate](https://github.com/mmuhunn/CampusShare/issues/17)
 
 ## 📜 License
 This project is licensed under the MIT License - see the [LICENSE](LICENSE) file for details.
@@ -91,9 +96,4 @@ This project is licensed under the MIT License - see the [LICENSE](LICENSE) file
     
 ![Top Language](https://img.shields.io/github/languages/top/mmuhunn/CampusShare)
  
- <div style="text-align: left;"> 
-    <h2 style="border-bottom: 1px solid #d8dee4; color: #282d33;"> 🏅 Stats </h2> <div style="text-align: left;"> <img src="https://github-readme-stats.vercel.app/api?username=mmuhunn&bg_color=180,000000,&title_color=000000&text_color=000000"
-         /> <img src="https://github-readme-stats.vercel.app/api/top-langs/?username=mmuhunn&layout=compact&bg_color=180,000000,&title_color=000000&text_color=000000"
-          /> </div> 
-    </div>
     
