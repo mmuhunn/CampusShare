@@ -2,8 +2,6 @@
 ![image](https://github.com/user-attachments/assets/69040374-efe7-438d-9137-2b2ef9d4705e)
 <br><br>
 
-## 🥅Purpose and Goals
-<br>
 
 > ## 🎓**Fostering a Community of Shared Knowledge and Academic Excellence**
 <br>
@@ -28,9 +26,9 @@ Check out the live demo: [`CampusShare_Homepage`](https://charming-creponne-154b
 - 🌟 Coming Soon: Notifications and real-time chat
 
 ## 📸 Screenshots
-<img src="https://github.com/user-attachments/assets/c18a1016-bc3a-480e-b36e-fa5591518a6a" alt="CampusShare Login" width="300" />
-<img src="https://github.com/user-attachments/assets/a1b161c4-dec8-45d9-b1dd-577ab11e256d" alt="CampusShare Subject List" width="300" />
-<img src="https://github.com/user-attachments/assets/5f5411b2-0b53-473f-8421-f05c88865f10" alt="CampusShare New post" width="300" />
+<img src="https://github.com/user-attachments/assets/4e72468d-64a1-4313-9af0-e5358cbecfee" alt="CampusShare Home" width="300" />
+<img src="https://github.com/user-attachments/assets/27166d74-db21-4421-80a6-ed8b103f7b34" alt="CampusShare Boards" width="300" />
+<img src="https://github.com/user-attachments/assets/382ccfbe-61a2-4ae1-bbc7-012236904e85" alt="CampusShare Login" width="300" />
 
 
 
@@ -69,13 +67,16 @@ To get the Spring project up and running locally:
 4. Open your results "http://localhost:8080".
 
 ## 🤝 Contributing
-We welcome contributions! Please read our [Contributing Guidelines](CONTRIBUTING.md) for more information.
+We welcome contributions! Please read below list for more information.
+
+### For New Contributors
+- [Contributing Guidelines](https://github.com/mmuhunn/CampusShare/blob/main/Contributing%20Guidelines.md)
+- [Welcome New Contributors](https://github.com/mmuhunn/CampusShare/discussions/69)
+- [How to cooperate](https://github.com/mmuhunn/CampusShare/issues/17)
 
 ## 📜 License
 This project is licensed under the MIT License - see the [LICENSE](LICENSE) file for details.
 
-
-[Contributing Guidelines](Contributing%20Guidelines.md)
 
 
 <div style="text-align: left;">
@@ -91,9 +92,4 @@ This project is licensed under the MIT License - see the [LICENSE](LICENSE) file
     
 ![Top Language](https://img.shields.io/github/languages/top/mmuhunn/CampusShare)
  
- <div style="text-align: left;"> 
-    <h2 style="border-bottom: 1px solid #d8dee4; color: #282d33;"> 🏅 Stats </h2> <div style="text-align: left;"> <img src="https://github-readme-stats.vercel.app/api?username=mmuhunn&bg_color=180,000000,&title_color=000000&text_color=000000"
-         /> <img src="https://github-readme-stats.vercel.app/api/top-langs/?username=mmuhunn&layout=compact&bg_color=180,000000,&title_color=000000&text_color=000000"
-          /> </div> 
-    </div>
     
