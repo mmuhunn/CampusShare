@@ -24,8 +24,8 @@ jobs:
 
       # 의존성 설치
       - name: Install dependencies
+        working-directory: CampusShare_Frontend
         run: |
-          cd CampusShare_Frontend/src
           npm install
 
       # 테스트 실행
