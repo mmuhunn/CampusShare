@@ -46,4 +46,45 @@ describe("Board Component", () => {
     expect(screen.getByText(/Course 1/i)).toBeInTheDocument();
     expect(screen.getByText(/Course 2/i)).toBeInTheDocument();
   });
+
+  //강의평가 부분을 추가한 이후 유닛테스트
+  test("displays reviews when a course is selected", () => {
+    const mockReviews = {
+      "Course 1": [
+        { id: 1, review: "Great course! ★★★★★" },
+        { id: 2, review: "Very informative. ★★★★" },
+      ],
+    };
+
+    render(
+      <MemoryRouter>
+        <Board coursesData={["Course 1", "Course 2"]} />
+      </MemoryRouter>
+    );
+
+    fireEvent.click(screen.getByText(/Course 1/i));
+
+    // 리뷰 섹션 확인
+    expect(screen.getByText("Reviews for Course 1")).toBeInTheDocument();
+    expect(screen.getByText("Great course! ★★★★★")).toBeInTheDocument();
+    expect(screen.getByText("Very informative. ★★★★")).toBeInTheDocument();
+  });
+
+  test("displays 'No reviews available' if no reviews exist for selected course", () => {
+    const mockReviews = {};
+
+    render(
+      <MemoryRouter>
+        <Board coursesData={["Course 1", "Course 2"]} />
+      </MemoryRouter>
+    );
+
+    fireEvent.click(screen.getByText(/Course 2/i));
+
+    // 리뷰가 없을 경우 "No reviews available" 메시지 확인
+    expect(screen.getByText("No reviews available for this course.")).toBeInTheDocument();
+  });
+
+
+
 });

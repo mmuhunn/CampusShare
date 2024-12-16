@@ -10,17 +10,23 @@ const Header = ({ setCoursesData }) => {
   const grades = ["1", "2", "3", "4"];
   const semesters = ["1", "2"];
 
+  // 수정된 과목 데이터
+  const courses = {
+    "1-1": ["English Writing I", "English Listening I", "Presentation I", "Business Information Systems", "Calculus I", "Career Design and Employment Planning"],
+    "1-2": ["Logical Writing", "Calculus II", "English Writing II", "Presentation II", "Programming Language", "Statistical Analysis"],
+    "2-1": ["Accounting Principles", "Engineering Math", "Database Management", "Applied Statistics", "Computer Language", "Communication I"],
+    "2-2": ["Business Process Management", "Engineering Math", "Communication II", "Open Source SW", "Data Structure", "Computer System"],
+    "3-1": ["Operating Systems Design", "Algorithm", "Computer Networks", "Fundamentals of Finance", "Data Mining", "Web Programming I", "Mathematical Statistics"],
+    "3-2": ["Software Engineering", "Management Science", "Mobile Programming", "Enterprise Resources Planning", "Big Data Practice", "Deep Learning", "Stochastic Processes"],
+    "4-1": ["Capstone Design I", "Information Security", "Internship", "Strategic Technology Management", "IT Project Management", "Decision Making Theory", "UX Analytics"],
+    "4-2": ["Capstone Design II", "Supply Chain Management", "Organizational Behavior", "High Tech Marketing", "Internship", "Data Science Practice", "Simulation"],
+  };
+
   const handleSearch = () => {
     if (selectedGrade && selectedSemester) {
       const key = `${selectedGrade}-${selectedSemester}`;
-      const courses = {
-        "1-1": ["English Writing I", "Calculus I", "Business Information Systems"],
-        "1-2": ["Logical Writing", "Programming Language", "Statistical Analysis"],
-        "2-1": ["Advanced Mathematics", "Database Systems"],
-        "2-2": ["Operating Systems", "Network Security"],
-      };
-
-      setCoursesData(courses[key] || []);
+      const selectedCourses = courses[key] || [];
+      setCoursesData(selectedCourses);
       navigate(`/board?grade=${selectedGrade}&semester=${selectedSemester}`);
     } else {
       alert("Please select both Grade and Semester before searching.");
