@@ -28,9 +28,9 @@ Check out the live demo: [`CampusShare_Homepage`](https://charming-creponne-154b
 - 🌟 Coming Soon: Notifications and real-time chat
 
 ## 📸 Screenshots
-<img src="https://github.com/user-attachments/assets/c18a1016-bc3a-480e-b36e-fa5591518a6a" alt="CampusShare Login" width="300" />
-<img src="https://github.com/user-attachments/assets/a1b161c4-dec8-45d9-b1dd-577ab11e256d" alt="CampusShare Subject List" width="300" />
-<img src="https://github.com/user-attachments/assets/5f5411b2-0b53-473f-8421-f05c88865f10" alt="CampusShare New post" width="300" />
+<img src="https://github.com/user-attachments/assets/4e72468d-64a1-4313-9af0-e5358cbecfee" alt="CampusShare Home" width="300" />
+<img src="https://github.com/user-attachments/assets/27166d74-db21-4421-80a6-ed8b103f7b34" alt="CampusShare Boards" width="300" />
+<img src="https://github.com/user-attachments/assets/382ccfbe-61a2-4ae1-bbc7-012236904e85" alt="CampusShare Login" width="300" />
 
 
 
